@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – SportsCalendar – BasecampDev</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange: #F45C2B;
+      --orange-light: #FF7A4D;
+      --dark: #0D0D0D;
+      --dark-3: #1C1C1C;
+      --gray: #888888;
+      --light: #F0EDE8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13,13,13,0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      color: var(--light);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-back:hover { color: var(--light); }
+
+    /* Page header */
+    .page-header {
+      padding: 8rem 2.5rem 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      z-index: 1;
+    }
+    .page-header-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 40% 60% at 80% 50%, rgba(244,92,43,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: var(--orange-light); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { color: var(--gray); }
+    .page-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(244,92,43,0.1);
+      border: 1px solid rgba(244,92,43,0.2);
+      color: var(--orange-light);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+    .page-header h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+    }
+    .page-header .subtitle {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Doc nav pills */
+    .doc-nav {
+      position: relative;
+      z-index: 1;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .doc-pill {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--gray);
+    }
+    .doc-pill:hover { border-color: rgba(244,92,43,0.3); color: var(--light); }
+    .doc-pill.active {
+      background: rgba(244,92,43,0.15);
+      border-color: rgba(244,92,43,0.35);
+      color: var(--orange-light);
+    }
+
+    /* Content */
+    .content-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3.5rem 2.5rem 5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* TOC */
+    .toc-box {
+      background: var(--dark-3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 3rem;
+    }
+    .toc-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .toc-list a {
+      font-size: 0.85rem;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .toc-list a::before {
+      content: '→';
+      color: var(--orange);
+      font-size: 0.7rem;
+      opacity: 0.6;
+    }
+    .toc-list a:hover { color: var(--light); }
+
+    /* Section */
+    .policy-section {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .policy-section:last-child { border-bottom: none; }
+
+    .section-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    .section-sub {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem;
+      color: rgba(240,237,232,0.85);
+    }
+    p {
+      font-size: 0.92rem;
+      color: rgba(240,237,232,0.7);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    ul, ol {
+      margin: 0.5rem 0 1rem 1.25rem;
+    }
+    li {
+      font-size: 0.9rem;
+      color: rgba(240,237,232,0.7);
+      line-height: 1.75;
+      margin-bottom: 0.35rem;
+    }
+    a { color: var(--orange-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    strong { color: var(--light); font-weight: 500; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.85rem;
+    }
+    th {
+      background: rgba(244,92,43,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--light);
+    }
+    td {
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 0.65rem 0.85rem;
+      color: rgba(240,237,232,0.7);
+      line-height: 1.6;
+      vertical-align: top;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: rgba(244,92,43,0.07);
+      border: 1px solid rgba(244,92,43,0.2);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+    .highlight-box p { color: rgba(240,237,232,0.8); margin: 0; }
+
+    footer {
+      padding: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    footer p { font-size: 0.8rem; color: var(--gray); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--light); }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.25rem; }
+      .page-header { padding: 7rem 1.25rem 2.5rem; }
+      .doc-nav { padding: 1rem 1.25rem; }
+      .content-wrap { padding: 2.5rem 1.25rem 4rem; }
+      footer { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Basecamp<span>Dev</span></a>
+    <a href="teamtracker.html" class="nav-back">← SportsCalendar</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-bg"></div>
+    <div class="breadcrumb">
+      <a href="index.html">BasecampDev</a>
+      <span>/</span>
+      <a href="teamtracker.html">SportsCalendar</a>
+      <span>/</span>
+      <span>Privacy Policy</span>
+    </div>
+    <div class="page-tag">Legal Document</div>
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">TeamTracker – Sports Calendar &nbsp;·&nbsp; Last updated September 14, 2025</p>
+  </div>
+
+  <div class="doc-nav">
+    <a href="teamtracker-privacy.html" class="doc-pill active">Privacy Policy</a>
+    <a href="teamtracker-eula.html" class="doc-pill">EULA</a>
+    <a href="teamtracker-terms.html" class="doc-pill">Terms &amp; Conditions</a>
+  </div>
+
+  <div class="content-wrap">
+
+    <div class="toc-box">
+      <div class="toc-title">Table of Contents</div>
+      <ul class="toc-list">
+        <li><a href="#s1">1. What Information Do We Collect?</a></li>
+        <li><a href="#s2">2. How Do We Process Your Information?</a></li>
+        <li><a href="#s3">3. What Legal Bases Do We Rely On?</a></li>
+        <li><a href="#s4">4. When and With Whom Do We Share Information?</a></li>
+        <li><a href="#s5">5. How Do We Handle Social Logins?</a></li>
+        <li><a href="#s6">6. Is Your Information Transferred Internationally?</a></li>
+        <li><a href="#s7">7. How Long Do We Keep Your Information?</a></li>
+        <li><a href="#s8">8. How Do We Keep Your Information Safe?</a></li>
+        <li><a href="#s9">9. What Are Your Privacy Rights?</a></li>
+        <li><a href="#s10">10. Controls for Do-Not-Track Features</a></li>
+        <li><a href="#s11">11. US Residents – Specific Privacy Rights</a></li>
+        <li><a href="#s12">12. Do We Make Updates to This Notice?</a></li>
+        <li><a href="#s13">13. How Can You Contact Us?</a></li>
+        <li><a href="#s14">14. Review, Update, or Delete Your Data</a></li>
+      </ul>
+    </div>
+
+    <div class="highlight-box">
+      <p>This Privacy Notice for <strong>TeamTracker – Sports Calendar</strong> describes how and why we might access, collect, store, use, and share your personal information when you use our services. Questions? Contact us at <a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a>.</p>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="policy-section">
+      <div class="section-num">Summary</div>
+      <div class="section-title">Key Points</div>
+      <p><strong>What personal information do we process?</strong> We may process personal information depending on how you interact with us and the services, the choices you make, and the products and features you use.</p>
+      <p><strong>Do we process any sensitive personal information?</strong> No. We do not process sensitive personal information.</p>
+      <p><strong>Do we collect any information from third parties?</strong> No. We do not collect any information from third parties.</p>
+      <p><strong>How do we process your information?</strong> We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law.</p>
+      <p><strong>How do we keep your information safe?</strong> We have organizational and technical processes in place to protect your personal information. However, no electronic transmission over the internet can be guaranteed to be 100% secure.</p>
+      <p><strong>What are your rights?</strong> Depending on where you are located, the applicable privacy law may mean you have certain rights regarding your personal information.</p>
+      <p><strong>How do you exercise your rights?</strong> The easiest way is by submitting a <a href="https://app.termly.io/dsar/974eab29-dc9e-4bee-99d7-536b4b54b285" target="_blank">data subject access request</a> or by contacting us at <a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a>.</p>
+    </div>
+
+    <!-- S1 -->
+    <div class="policy-section" id="s1">
+      <div class="section-num">Section 1</div>
+      <div class="section-title">What Information Do We Collect?</div>
+
+      <div class="section-sub">Personal Information You Disclose to Us</div>
+      <p>We collect personal information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products and Services, or when you contact us. The personal information we collect may include:</p>
+      <ul>
+        <li>Email addresses</li>
+        <li>Contact or authentication data</li>
+      </ul>
+      <p><strong>Sensitive Information.</strong> We do not process sensitive information.</p>
+
+      <div class="section-sub">Payment Data</div>
+      <p>We may collect data necessary to process your payment if you choose to make purchases, such as your payment instrument number and the security code associated with your payment instrument. All payment data is handled and stored by <strong>RevenueCat</strong>, <strong>Apple App Store</strong>, and <strong>Google Play</strong>. You may find their privacy notices here:</p>
+      <ul>
+        <li><a href="https://www.revenuecat.com/privacy/" target="_blank">RevenueCat Privacy Policy</a></li>
+        <li><a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
+      </ul>
+      <p>All payments are processed by third-party providers and your payment information is not stored directly by our app.</p>
+
+      <div class="section-sub">Social Media Login Data</div>
+      <p>We may provide you with the option to register using your existing social media account details (Facebook, X, etc.). If you choose to register this way, we will collect certain profile information from the social media provider.</p>
+
+      <div class="section-sub">Application Data</div>
+      <p>If you use our application, we may also collect the following if you grant access or permission:</p>
+      <ul>
+        <li><strong>Mobile Device Access.</strong> We may request access to certain features including calendar and storage. You may change access in your device's settings.</li>
+        <li><strong>Mobile Device Data.</strong> We automatically collect device information such as your mobile device ID, model, manufacturer, operating system, version information, IP address, and other technical details.</li>
+        <li><strong>Push Notifications.</strong> We may request to send you push notifications regarding your account or certain app features. You may turn these off in your device's settings.</li>
+      </ul>
+
+      <div class="section-sub">Information Automatically Collected</div>
+      <p>Some information — such as your IP address and browser/device characteristics — is collected automatically when you visit our Services. This information is primarily needed to maintain the security and operation of our Services. The information we collect includes:</p>
+      <ul>
+        <li><strong>Log and Usage Data.</strong> Service-related, diagnostic, usage, and performance information our servers automatically collect, including IP address, device information, browser type, and activity within the Services.</li>
+        <li><strong>Device Data.</strong> Information about your computer, phone, tablet, or other device you use to access the Services.</li>
+      </ul>
+    </div>
+
+    <!-- S2 -->
+    <div class="policy-section" id="s2">
+      <div class="section-num">Section 2</div>
+      <div class="section-title">How Do We Process Your Information?</div>
+      <p>We process your personal information for a variety of reasons, including:</p>
+      <ul>
+        <li><strong>To facilitate account creation and authentication</strong> and otherwise manage user accounts.</li>
+        <li><strong>To deliver and facilitate delivery of services</strong> to the user.</li>
+        <li><strong>To respond to user inquiries/offer support</strong> to users.</li>
+        <li><strong>To send administrative information</strong> to you.</li>
+        <li><strong>To fulfill and manage your orders</strong>, payments, returns, and exchanges made through the Services.</li>
+        <li><strong>To protect our Services</strong> as part of our efforts to keep them safe and secure, including fraud monitoring and prevention.</li>
+        <li><strong>To identify usage trends</strong> so we can better understand how Services are being used.</li>
+        <li><strong>To save or protect an individual's vital interest</strong>, such as to prevent harm.</li>
+      </ul>
+    </div>
+
+    <!-- S3 -->
+    <div class="policy-section" id="s3">
+      <div class="section-num">Section 3</div>
+      <div class="section-title">What Legal Bases Do We Rely On?</div>
+      <p>We only process your personal information when we believe it is necessary and we have a valid legal reason to do so under applicable law.</p>
+
+      <div class="section-sub">If You Are Located in the EU or UK</div>
+      <p>The GDPR and UK GDPR require us to explain the valid legal bases we rely on:</p>
+      <ul>
+        <li><strong>Consent.</strong> We may process your information if you have given us permission to use it for a specific purpose. You can withdraw your consent at any time.</li>
+        <li><strong>Performance of a Contract.</strong> We may process your information when necessary to fulfill our contractual obligations to you.</li>
+        <li><strong>Legitimate Interests.</strong> We may process your information when it is reasonably necessary to achieve our legitimate business interests.</li>
+        <li><strong>Legal Obligations.</strong> We may process your information where required for compliance with our legal obligations.</li>
+        <li><strong>Vital Interests.</strong> We may process your information where necessary to protect your vital interests or those of a third party.</li>
+      </ul>
+
+      <div class="section-sub">If You Are Located in Canada</div>
+      <p>We may process your information if you have given us specific permission (express consent) or in situations where your permission can be inferred (implied consent). You can withdraw your consent at any time.</p>
+    </div>
+
+    <!-- S4 -->
+    <div class="policy-section" id="s4">
+      <div class="section-num">Section 4</div>
+      <div class="section-title">When and With Whom Do We Share Your Personal Information?</div>
+      <p>We may share information in specific situations with the following third parties:</p>
+      <ul>
+        <li><strong>Functionality and Infrastructure Optimization:</strong> Cloud Firestore</li>
+        <li><strong>Invoice and Billing:</strong> RevenueCat</li>
+        <li><strong>User Account Registration and Authentication:</strong> Google Sign-In, Firebase Authentication, and Apple Sign-In</li>
+        <li><strong>Website Performance Monitoring:</strong> Crashlytics</li>
+      </ul>
+      <p>We also may need to share your information in the following situations:</p>
+      <ul>
+        <li><strong>Business Transfers.</strong> We may share or transfer your information in connection with any merger, sale of company assets, financing, or acquisition of all or a portion of our business.</li>
+      </ul>
+    </div>
+
+    <!-- S5 -->
+    <div class="policy-section" id="s5">
+      <div class="section-num">Section 5</div>
+      <div class="section-title">How Do We Handle Your Social Logins?</div>
+      <p>Our Services offer you the ability to register and log in using your third-party social media account details (like your Facebook or X logins). Where you choose to do this, we will receive certain profile information about you from the social media provider, which will often include your name, email address, friends list, and profile picture, as well as other information you choose to make public.</p>
+      <p>We will use the information we receive only for the purposes described in this Privacy Notice. Please note that we do not control, and are not responsible for, other uses of your personal information by your third-party social media provider.</p>
+    </div>
+
+    <!-- S6 -->
+    <div class="policy-section" id="s6">
+      <div class="section-num">Section 6</div>
+      <div class="section-title">Is Your Information Transferred Internationally?</div>
+      <p>Our servers are located in the United States. If you access the Services from any other region, please be aware that your information may be transferred to, stored, and processed by us in our facilities and by the third parties with whom we may share your personal information.</p>
+      <p>If you are a resident in the European Economic Area (EEA), United Kingdom (UK), or Switzerland, we will take all necessary measures to protect your personal information in accordance with this Privacy Notice and applicable law, including use of the European Commission's Standard Contractual Clauses for transfers.</p>
+    </div>
+
+    <!-- S7 -->
+    <div class="policy-section" id="s7">
+      <div class="section-num">Section 7</div>
+      <div class="section-title">How Long Do We Keep Your Information?</div>
+      <p>We will only keep your personal information for as long as it is necessary for the purposes set out in this Privacy Notice, unless a longer retention period is required or permitted by law. No purpose in this notice will require us keeping your personal information for longer than the period of time in which users have an account with us.</p>
+      <p>When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize it, or securely store it in isolation until deletion is possible.</p>
+    </div>
+
+    <!-- S8 -->
+    <div class="policy-section" id="s8">
+      <div class="section-num">Section 8</div>
+      <div class="section-title">How Do We Keep Your Information Safe?</div>
+      <p>We have implemented appropriate and reasonable technical and organizational security measures designed to protect the security of any personal information we process. However, despite our safeguards, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security.</p>
+      <p>Although we will do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the Services within a secure environment.</p>
+    </div>
+
+    <!-- S9 -->
+    <div class="policy-section" id="s9">
+      <div class="section-num">Section 9</div>
+      <div class="section-title">What Are Your Privacy Rights?</div>
+      <p>Depending on your location, you may have certain rights regarding your personal information, including the right to (i) request access and obtain a copy of your personal information, (ii) request rectification or erasure, (iii) restrict the processing of your personal information, and (iv) if applicable, to data portability.</p>
+
+      <div class="section-sub">Account Information</div>
+      <p>If you would at any time like to review or change the information in your account or terminate your account, you can log in to your account settings and update your user account. Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases.</p>
+      <p>If you have questions or comments about your privacy rights, you may email us at <a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a>.</p>
+    </div>
+
+    <!-- S10 -->
+    <div class="policy-section" id="s10">
+      <div class="section-num">Section 10</div>
+      <div class="section-title">Controls for Do-Not-Track Features</div>
+      <p>Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ("DNT") feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. At this stage, no uniform technology standard for recognizing and implementing DNT signals has been finalized. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online.</p>
+    </div>
+
+    <!-- S11 -->
+    <div class="policy-section" id="s11">
+      <div class="section-num">Section 11</div>
+      <div class="section-title">Do United States Residents Have Specific Privacy Rights?</div>
+      <p>If you are a resident of California, Colorado, Connecticut, Delaware, Florida, Indiana, Iowa, Kentucky, Maryland, Minnesota, Montana, Nebraska, New Hampshire, New Jersey, Oregon, Rhode Island, Tennessee, Texas, Utah, or Virginia, you may have the right to request access to and receive details about the personal information we maintain about you, correct inaccuracies, get a copy, or delete your personal information.</p>
+
+      <div class="section-sub">Categories of Personal Information We Collect</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Examples</th>
+            <th>Collected</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A. Identifiers</td>
+            <td>Contact details, name, email, IP address, account name</td>
+            <td>YES</td>
+          </tr>
+          <tr>
+            <td>B. Personal info (CA Customer Records)</td>
+            <td>Name, contact information, financial information</td>
+            <td>YES</td>
+          </tr>
+          <tr>
+            <td>C. Protected classification characteristics</td>
+            <td>Gender, age, race, ethnicity</td>
+            <td>YES</td>
+          </tr>
+          <tr>
+            <td>D. Commercial information</td>
+            <td>Transaction information, purchase history</td>
+            <td>YES</td>
+          </tr>
+          <tr>
+            <td>E. Biometric information</td>
+            <td>Fingerprints and voiceprints</td>
+            <td>NO</td>
+          </tr>
+          <tr>
+            <td>F. Internet or network activity</td>
+            <td>Browsing history, search history, online behavior</td>
+            <td>NO</td>
+          </tr>
+          <tr>
+            <td>G. Geolocation data</td>
+            <td>Device location</td>
+            <td>NO</td>
+          </tr>
+          <tr>
+            <td>H. Audio, electronic, sensory information</td>
+            <td>Images and audio, video recordings</td>
+            <td>NO</td>
+          </tr>
+          <tr>
+            <td>I. Professional or employment-related</td>
+            <td>Business contact details, job title</td>
+            <td>NO</td>
+          </tr>
+          <tr>
+            <td>J. Education information</td>
+            <td>Student records and directory information</td>
+            <td>NO</td>
+          </tr>
+          <tr>
+            <td>K. Inferences from collected data</td>
+            <td>Profile summaries about preferences</td>
+            <td>NO</td>
+          </tr>
+          <tr>
+            <td>L. Sensitive personal information</td>
+            <td>—</td>
+            <td>NO</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-sub">Your Rights</div>
+      <p>You have rights under certain US state data protection laws, including:</p>
+      <ul>
+        <li>Right to know whether or not we are processing your personal data</li>
+        <li>Right to access your personal data</li>
+        <li>Right to correct inaccuracies in your personal data</li>
+        <li>Right to request the deletion of your personal data</li>
+        <li>Right to obtain a copy of the personal data you previously shared with us</li>
+        <li>Right to non-discrimination for exercising your rights</li>
+        <li>Right to opt out of the processing of your personal data if used for targeted advertising, sale, or profiling</li>
+      </ul>
+
+      <div class="section-sub">How to Exercise Your Rights</div>
+      <p>To exercise these rights, you can contact us by submitting a <a href="https://app.termly.io/dsar/974eab29-dc9e-4bee-99d7-536b4b54b285" target="_blank">data subject access request</a>, by emailing us at <a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a>, or by referring to the contact details at the bottom of this document.</p>
+    </div>
+
+    <!-- S12 -->
+    <div class="policy-section" id="s12">
+      <div class="section-num">Section 12</div>
+      <div class="section-title">Do We Make Updates to This Notice?</div>
+      <p>Yes, we will update this notice as necessary to stay compliant with relevant laws. The updated version will be indicated by an updated "Revised" date at the top of this Privacy Notice. We encourage you to review this Privacy Notice frequently to be informed of how we are protecting your information.</p>
+    </div>
+
+    <!-- S13 -->
+    <div class="policy-section" id="s13">
+      <div class="section-num">Section 13</div>
+      <div class="section-title">How Can You Contact Us About This Notice?</div>
+      <p>If you have questions or comments about this notice, you may email us at <a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a> or contact us by post at:</p>
+      <div class="highlight-box">
+        <p><strong>TeamTracker – Sports Calendar</strong><br>United States<br><a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a></p>
+      </div>
+    </div>
+
+    <!-- S14 -->
+    <div class="policy-section" id="s14">
+      <div class="section-num">Section 14</div>
+      <div class="section-title">How Can You Review, Update, or Delete the Data We Collect From You?</div>
+      <p>Based on the applicable laws of your country or state of residence in the US, you may have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information.</p>
+      <p>To request to review, update, or delete your personal information, please fill out and submit a <a href="https://app.termly.io/dsar/974eab29-dc9e-4bee-99d7-536b4b54b285" target="_blank">data subject access request</a>.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2025 BasecampDev. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="teamtracker.html">← SportsCalendar</a>
+      <a href="index.html">All Apps</a>
+      <a href="mailto:basecampdevs@gmail.com">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>

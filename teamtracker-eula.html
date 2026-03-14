@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EULA – SportsCalendar – BasecampDev</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root { --orange: #F45C2B; --orange-light: #FF7A4D; --dark: #0D0D0D; --dark-3: #1C1C1C; --gray: #888888; --light: #F0EDE8; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--dark); color: var(--light); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.35; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2.5rem; display: flex; align-items: center; justify-content: space-between; background: rgba(13,13,13,0.9); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; color: var(--light); text-decoration: none; }
+    .nav-logo span { color: var(--orange); }
+    .nav-back { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--gray); text-decoration: none; transition: color 0.2s ease; }
+    .nav-back:hover { color: var(--light); }
+    .page-header { padding: 8rem 2.5rem 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); position: relative; z-index: 1; }
+    .page-header-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 40% 60% at 80% 50%, rgba(244,92,43,0.07) 0%, transparent 70%); pointer-events: none; }
+    .breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--gray); margin-bottom: 1.25rem; }
+    .breadcrumb a { color: var(--orange-light); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { color: var(--gray); }
+    .page-tag { display: inline-flex; align-items: center; background: rgba(244,92,43,0.1); border: 1px solid rgba(244,92,43,0.2); color: var(--orange-light); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 100px; margin-bottom: 1rem; }
+    .page-header h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem; }
+    .page-header .subtitle { color: var(--gray); font-size: 0.9rem; }
+    .doc-nav { position: relative; z-index: 1; padding: 1.25rem 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .doc-pill { font-size: 0.8rem; font-weight: 500; padding: 0.4rem 1rem; border-radius: 100px; text-decoration: none; transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.1); color: var(--gray); }
+    .doc-pill:hover { border-color: rgba(244,92,43,0.3); color: var(--light); }
+    .doc-pill.active { background: rgba(244,92,43,0.15); border-color: rgba(244,92,43,0.35); color: var(--orange-light); }
+    .content-wrap { max-width: 800px; margin: 0 auto; padding: 3.5rem 2.5rem 5rem; position: relative; z-index: 1; }
+    .toc-box { background: var(--dark-3); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.75rem; margin-bottom: 3rem; }
+    .toc-title { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .toc-list a { font-size: 0.85rem; color: var(--gray); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 0.5rem; }
+    .toc-list a::before { content: '→'; color: var(--orange); font-size: 0.7rem; opacity: 0.6; }
+    .toc-list a:hover { color: var(--light); }
+    .policy-section { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .policy-section:last-child { border-bottom: none; }
+    .section-num { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 1.25rem; letter-spacing: -0.01em; }
+    .section-sub { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: rgba(240,237,232,0.85); }
+    p { font-size: 0.92rem; color: rgba(240,237,232,0.7); line-height: 1.8; margin-bottom: 1rem; }
+    ul, ol { margin: 0.5rem 0 1rem 1.25rem; }
+    li { font-size: 0.9rem; color: rgba(240,237,232,0.7); line-height: 1.75; margin-bottom: 0.35rem; }
+    a { color: var(--orange-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    strong { color: var(--light); font-weight: 500; }
+    .highlight-box { background: rgba(244,92,43,0.07); border: 1px solid rgba(244,92,43,0.2); border-radius: 10px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
+    .highlight-box p { color: rgba(240,237,232,0.8); margin: 0; }
+    footer { padding: 2.5rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; position: relative; z-index: 1; }
+    footer p { font-size: 0.8rem; color: var(--gray); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--light); }
+    @media (max-width: 640px) { nav { padding: 1rem 1.25rem; } .page-header { padding: 7rem 1.25rem 2.5rem; } .doc-nav { padding: 1rem 1.25rem; } .content-wrap { padding: 2.5rem 1.25rem 4rem; } footer { padding: 2rem 1.25rem; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Basecamp<span>Dev</span></a>
+    <a href="teamtracker.html" class="nav-back">← SportsCalendar</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-bg"></div>
+    <div class="breadcrumb">
+      <a href="index.html">BasecampDev</a>
+      <span>/</span>
+      <a href="teamtracker.html">SportsCalendar</a>
+      <span>/</span>
+      <span>EULA</span>
+    </div>
+    <div class="page-tag">Legal Document</div>
+    <h1>End User License Agreement</h1>
+    <p class="subtitle">TeamTracker – Sports Calendar &nbsp;·&nbsp; Last updated September 11, 2025</p>
+  </div>
+
+  <div class="doc-nav">
+    <a href="teamtracker-privacy.html" class="doc-pill">Privacy Policy</a>
+    <a href="teamtracker-eula.html" class="doc-pill active">EULA</a>
+    <a href="teamtracker-terms.html" class="doc-pill">Terms &amp; Conditions</a>
+  </div>
+
+  <div class="content-wrap">
+
+    <div class="highlight-box">
+      <p><strong>TeamTracker – Sports Calendar</strong> is licensed to You (End-User) by TeamTracker – Sports Calendar, located in the United States ("Licensor"), for use only under the terms of this License Agreement.</p>
+    </div>
+
+    <p>By downloading the Licensed Application from Apple's App Store or Google's Play Store, and any update thereto, you indicate that you agree to be bound by all of the terms and conditions of this License Agreement and that you accept this License Agreement.</p>
+
+    <div class="toc-box">
+      <div class="toc-title">Table of Contents</div>
+      <ul class="toc-list">
+        <li><a href="#e1">1. The Application</a></li>
+        <li><a href="#e2">2. Scope of License</a></li>
+        <li><a href="#e3">3. Technical Requirements</a></li>
+        <li><a href="#e4">4. Maintenance and Support</a></li>
+        <li><a href="#e5">5. Use of Data</a></li>
+        <li><a href="#e6">6. User-Generated Contributions</a></li>
+        <li><a href="#e7">7. Contribution License</a></li>
+        <li><a href="#e8">8. Liability</a></li>
+        <li><a href="#e9">9. Warranty</a></li>
+        <li><a href="#e10">10. Product Claims</a></li>
+        <li><a href="#e11">11. Legal Compliance</a></li>
+        <li><a href="#e12">12. Contact Information</a></li>
+        <li><a href="#e13">13. Termination</a></li>
+        <li><a href="#e14">14. Third-Party Terms of Agreements and Beneficiary</a></li>
+        <li><a href="#e15">15. Intellectual Property Rights</a></li>
+        <li><a href="#e16">16. Applicable Law</a></li>
+        <li><a href="#e17">17. Miscellaneous</a></li>
+      </ul>
+    </div>
+
+    <div class="policy-section" id="e1">
+      <div class="section-num">Section 1</div>
+      <div class="section-title">The Application</div>
+      <p><strong>TeamTracker – Sports Calendar</strong> ("Licensed Application") is a piece of software created to provide sports fans with a centralized platform to track their favorite teams, view game schedules, and manage team calendars in one simple, easy-to-use app — and customized for iOS and Android mobile devices ("Devices"). It is used for users to search for sports teams, follow multiple teams, and access an aggregated calendar showing upcoming games and events for all followed teams.</p>
+      <p>The Licensed Application is not tailored to comply with industry-specific regulations (HIPAA, FISMA, etc.), so if your interactions would be subjected to such laws, you may not use this Licensed Application.</p>
+    </div>
+
+    <div class="policy-section" id="e2">
+      <div class="section-num">Section 2</div>
+      <div class="section-title">Scope of License</div>
+      <p>2.1 You are given a non-transferable, non-exclusive, non-sublicensable license to install and use the Licensed Application on any Devices that You own or control and as permitted by the Usage Rules, with the exception that such Licensed Application may be accessed and used by other accounts associated with You via Family Sharing or volume purchasing.</p>
+      <p>2.2 This license will also govern any updates of the Licensed Application provided by Licensor that replace, repair, and/or supplement the first Licensed Application, unless a separate license is provided for such update.</p>
+      <p>2.3 You may not share or make the Licensed Application available to third parties (unless to the degree allowed by the Usage Rules, and with TeamTracker – Sports Calendar's prior written consent), sell, rent, lend, lease or otherwise redistribute the Licensed Application.</p>
+      <p>2.4 You may not reverse engineer, translate, disassemble, integrate, decompile, remove, modify, combine, create derivative works or updates of, adapt, or attempt to derive the source code of the Licensed Application, or any part thereof (except with TeamTracker – Sports Calendar's prior written consent).</p>
+      <p>2.5 You may not copy (excluding when expressly authorized by this license and the Usage Rules) or alter the Licensed Application or portions thereof. You may create and store copies only on devices that You own or control for backup keeping. If you sell your Devices to a third party, you must remove the Licensed Application from the Devices before doing so.</p>
+      <p>2.6 Violations of the obligations mentioned above, as well as the attempt of such infringement, may be subject to prosecution and damages.</p>
+      <p>2.7 Licensor reserves the right to modify the terms and conditions of licensing.</p>
+      <p>2.8 Nothing in this license should be interpreted to restrict third-party terms. When using the Licensed Application, You must ensure that You comply with applicable third-party terms and conditions.</p>
+    </div>
+
+    <div class="policy-section" id="e3">
+      <div class="section-num">Section 3</div>
+      <div class="section-title">Technical Requirements</div>
+      <p>3.1 The Licensed Application requires a firmware version 1.0.0 or higher. Licensor recommends using the latest version of the firmware.</p>
+      <p>3.2 Licensor attempts to keep the Licensed Application updated so that it complies with modified/new versions of the firmware and new hardware. You are not granted rights to claim such an update.</p>
+      <p>3.3 You acknowledge that it is Your responsibility to confirm and determine that the app end-user device on which You intend to use the Licensed Application satisfies the technical specifications mentioned above.</p>
+      <p>3.4 Licensor reserves the right to modify the technical specifications as it sees appropriate at any time.</p>
+    </div>
+
+    <div class="policy-section" id="e4">
+      <div class="section-num">Section 4</div>
+      <div class="section-title">Maintenance and Support</div>
+      <p>4.1 The Licensor is solely responsible for providing any maintenance and support services for this Licensed Application. You can reach the Licensor at the email address listed in the App Store or Play Store Overview for this Licensed Application.</p>
+      <p>4.2 TeamTracker – Sports Calendar and the End-User acknowledge that the Services have no obligation whatsoever to furnish any maintenance and support services with respect to the Licensed Application.</p>
+    </div>
+
+    <div class="policy-section" id="e5">
+      <div class="section-num">Section 5</div>
+      <div class="section-title">Use of Data</div>
+      <p>You acknowledge that Licensor will be able to access and adjust Your downloaded Licensed Application content and Your personal information, and that Licensor's use of such material and information is subject to Your legal agreements with Licensor and Licensor's privacy policy, which can be accessed by clicking on the settings icon.</p>
+      <p>You acknowledge that the Licensor may periodically collect and use technical data and related information about your device, system, and application software, and peripherals, to offer product support, facilitate software updates, and for purposes of providing other services to you related to the Licensed Application. Licensor may also use this information to improve its products or to provide services or technologies to you, as long as it is in a form that does not personally identify you.</p>
+    </div>
+
+    <div class="policy-section" id="e6">
+      <div class="section-num">Section 6</div>
+      <div class="section-title">User-Generated Contributions</div>
+      <p>The Licensed Application does not offer users the ability to submit or post content. However, we may provide you with the opportunity to create, submit, post, display, transmit, perform, publish, distribute, or broadcast content and materials to us or in the Licensed Application, including but not limited to text, writings, video, audio, photographs, graphics, comments, suggestions, or personal information (collectively, "Contributions").</p>
+      <p>When you create or make available any Contributions, you represent and warrant that your Contributions do not infringe any proprietary rights of any third party, are not false, inaccurate, or misleading, are not unsolicited advertising, spam, or otherwise objectionable, do not ridicule, mock, disparage, or intimidate anyone, do not violate any applicable law, and do not otherwise violate any provision of this License Agreement.</p>
+    </div>
+
+    <div class="policy-section" id="e7">
+      <div class="section-num">Section 7</div>
+      <div class="section-title">Contribution License</div>
+      <p>You agree that we may access, store, process, and use any information and personal data that you provide following the terms of the Privacy Policy and your choices.</p>
+      <p>By submitting suggestions or other feedback regarding the Licensed Application, you agree that we can use and share such feedback for any purpose without compensation to you.</p>
+      <p>We do not assert any ownership over your Contributions. You retain full ownership of all of your Contributions and any intellectual property rights or other proprietary rights associated with your Contributions. We are not liable for any statements or representations in your Contributions. You are solely responsible for your Contributions to the Licensed Application.</p>
+    </div>
+
+    <div class="policy-section" id="e8">
+      <div class="section-num">Section 8</div>
+      <div class="section-title">Liability</div>
+      <p>8.1 Licensor's responsibility in the case of violation of obligations and tort shall be limited to intent and gross negligence. Only in case of a breach of essential contractual duties (cardinal obligations), Licensor shall also be liable in case of slight negligence. In any case, liability shall be limited to the foreseeable, contractually typical damages. The limitation mentioned above does not apply to injuries to life, limb, or health.</p>
+      <p>8.2 Licensor takes no accountability or responsibility for any damages caused due to a breach of duties according to Section 2 of this License Agreement. To avoid data loss, You are required to make use of backup functions of the Licensed Application to the extent allowed by applicable third-party terms and conditions of use.</p>
+      <p>8.3 To the maximum extent permitted by law, the Company shall not be liable for any indirect, incidental, or consequential damages, including but not limited to lost profits, lost data, or errors in game schedules. Liability for subscription payments is limited to the amount paid by the user for the relevant subscription period. Users are responsible for backing up any personal data or content within the app.</p>
+    </div>
+
+    <div class="policy-section" id="e9">
+      <div class="section-num">Section 9</div>
+      <div class="section-title">Warranty</div>
+      <p>9.1 Licensor warrants that the Licensed Application is free of spyware, trojan horses, viruses, or any other malware at the time of Your download. Licensor warrants that the Licensed Application works as described in the user documentation.</p>
+      <p>9.2 No warranty is provided for the Licensed Application that is not executable on the device, that has been unauthorizedly modified, handled inappropriately or culpably, combined or installed with inappropriate hardware or software, used with inappropriate accessories, regardless if by Yourself or by third parties, or if there are any other reasons outside of TeamTracker – Sports Calendar's sphere of influence that affect the executability.</p>
+      <p>9.3 You are required to inspect the Licensed Application immediately after installing it and notify TeamTracker – Sports Calendar about issues discovered without delay by email. The defect report will be taken into consideration and further investigated if it has been emailed within a period of ninety (90) days after discovery.</p>
+      <p>9.4 If we confirm that the Licensed Application is defective, TeamTracker – Sports Calendar reserves a choice to remedy the situation either by means of solving the defect or substitute delivery.</p>
+      <p>9.5 In the event of any failure of the Licensed Application to conform to any applicable warranty, You may notify the Services Store Operator, and Your Licensed Application purchase price will be refunded to You.</p>
+      <p>9.6 If the user is an entrepreneur, any claim based on faults expires after a statutory period of limitation amounting to twelve (12) months after the Licensed Application was made available to the user.</p>
+    </div>
+
+    <div class="policy-section" id="e10">
+      <div class="section-num">Section 10</div>
+      <div class="section-title">Product Claims</div>
+      <p>TeamTracker – Sports Calendar and the End-User acknowledge that TeamTracker – Sports Calendar, and not the Services, is responsible for addressing any claims of the End-User or any third party relating to the Licensed Application or the End-User's possession and/or use of that Licensed Application, including, but not limited to:</p>
+      <ul>
+        <li>(i) Product liability claims</li>
+        <li>(ii) Any claim that the Licensed Application fails to conform to any applicable legal or regulatory requirement</li>
+        <li>(iii) Claims arising under consumer protection, privacy, or similar legislation</li>
+      </ul>
+    </div>
+
+    <div class="policy-section" id="e11">
+      <div class="section-num">Section 11</div>
+      <div class="section-title">Legal Compliance</div>
+      <p>You represent and warrant that You are not located in a country that is subject to a US Government embargo, or that has been designated by the US Government as a "terrorist supporting" country; and that You are not listed on any US Government list of prohibited or restricted parties.</p>
+    </div>
+
+    <div class="policy-section" id="e12">
+      <div class="section-num">Section 12</div>
+      <div class="section-title">Contact Information</div>
+      <p>For general inquiries, complaints, questions or claims concerning the Licensed Application, please contact:</p>
+      <div class="highlight-box">
+        <p><strong>Matthew Maness</strong><br>United States<br><a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a></p>
+      </div>
+    </div>
+
+    <div class="policy-section" id="e13">
+      <div class="section-num">Section 13</div>
+      <div class="section-title">Termination</div>
+      <p>The license is valid until terminated by TeamTracker – Sports Calendar or by You. Your rights under this license will terminate automatically and without notice from TeamTracker – Sports Calendar if You fail to adhere to any term(s) of this license. Upon License termination, You shall stop all use of the Licensed Application, and destroy all copies, full or partial, of the Licensed Application.</p>
+    </div>
+
+    <div class="policy-section" id="e14">
+      <div class="section-num">Section 14</div>
+      <div class="section-title">Third-Party Terms of Agreements and Beneficiary</div>
+      <p>TeamTracker – Sports Calendar represents and warrants that TeamTracker – Sports Calendar will comply with applicable third-party terms of agreement when using the Licensed Application.</p>
+      <p>In Accordance with Section 9 of the "Instructions for Minimum Terms of Developer's End-User License Agreement," both Apple and Google and their subsidiaries shall be third-party beneficiaries of this End User License Agreement. Upon Your acceptance of the terms and conditions of this License Agreement, both Apple and Google will have the right (and will be deemed to have accepted the right) to enforce this End User License Agreement against You as a third-party beneficiary thereof.</p>
+    </div>
+
+    <div class="policy-section" id="e15">
+      <div class="section-num">Section 15</div>
+      <div class="section-title">Intellectual Property Rights</div>
+      <p>TeamTracker – Sports Calendar and the End-User acknowledge that, in the event of any third-party claim that the Licensed Application or the End-User's possession and use of that Licensed Application infringes on the third party's intellectual property rights, TeamTracker – Sports Calendar, and not the Services, will be solely responsible for the investigation, defense, settlement, and discharge of any such intellectual property infringement claims.</p>
+    </div>
+
+    <div class="policy-section" id="e16">
+      <div class="section-num">Section 16</div>
+      <div class="section-title">Applicable Law</div>
+      <p>This License Agreement is governed by the laws of the State of Colorado, excluding its conflicts of law rules.</p>
+    </div>
+
+    <div class="policy-section" id="e17">
+      <div class="section-num">Section 17</div>
+      <div class="section-title">Miscellaneous</div>
+      <p>17.1 If any of the terms of this agreement should be or become invalid, the validity of the remaining provisions shall not be affected. Invalid terms will be replaced by valid ones formulated in a way that will achieve the primary purpose.</p>
+      <p>17.2 Collateral agreements, changes and amendments are only valid if laid down in writing. The preceding clause can only be waived in writing.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2025 BasecampDev. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="teamtracker.html">← SportsCalendar</a>
+      <a href="index.html">All Apps</a>
+      <a href="mailto:basecampdevs@gmail.com">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
