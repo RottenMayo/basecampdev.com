@@ -3,348 +3,344 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms & Conditions – SportsCalendar – BasecampDev</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Terms & Conditions – TeamTracker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    :root { --orange: #F45C2B; --orange-light: #FF7A4D; --dark: #0D0D0D; --dark-3: #1C1C1C; --gray: #888888; --light: #F0EDE8; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background-color: var(--dark); color: var(--light); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
-    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
-    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.35; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2.5rem; display: flex; align-items: center; justify-content: space-between; background: rgba(13,13,13,0.9); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em; color: var(--light); text-decoration: none; }
-    .nav-logo span { color: var(--orange); }
-    .nav-back { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--gray); text-decoration: none; transition: color 0.2s ease; }
-    .nav-back:hover { color: var(--light); }
-    .page-header { padding: 8rem 2.5rem 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); position: relative; z-index: 1; }
-    .page-header-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 40% 60% at 80% 50%, rgba(244,92,43,0.07) 0%, transparent 70%); pointer-events: none; }
-    .breadcrumb { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--gray); margin-bottom: 1.25rem; }
-    .breadcrumb a { color: var(--orange-light); text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .breadcrumb span { color: var(--gray); }
-    .page-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(244,92,43,0.1); border: 1px solid rgba(244,92,43,0.2); color: var(--orange-light); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 100px; margin-bottom: 1rem; }
-    .page-header h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.5rem; }
-    .page-header .subtitle { color: var(--gray); font-size: 0.9rem; }
-    .doc-nav { position: relative; z-index: 1; padding: 1.25rem 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    .doc-pill { font-size: 0.8rem; font-weight: 500; padding: 0.4rem 1rem; border-radius: 100px; text-decoration: none; transition: all 0.2s ease; border: 1px solid rgba(255,255,255,0.1); color: var(--gray); }
-    .doc-pill:hover { border-color: rgba(244,92,43,0.3); color: var(--light); }
-    .doc-pill.active { background: rgba(244,92,43,0.15); border-color: rgba(244,92,43,0.35); color: var(--orange-light); }
-    .content-wrap { max-width: 800px; margin: 0 auto; padding: 3.5rem 2.5rem 5rem; position: relative; z-index: 1; }
-    .toc-box { background: var(--dark-3); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.75rem; margin-bottom: 3rem; }
-    .toc-title { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
-    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .toc-list a { font-size: 0.85rem; color: var(--gray); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 0.5rem; }
-    .toc-list a::before { content: '→'; color: var(--orange); font-size: 0.7rem; opacity: 0.6; }
-    .toc-list a:hover { color: var(--light); }
-    .policy-section { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .policy-section:last-child { border-bottom: none; }
-    .section-num { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
-    .section-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 1.25rem; letter-spacing: -0.01em; }
-    .section-sub { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: rgba(240,237,232,0.85); }
-    p { font-size: 0.92rem; color: rgba(240,237,232,0.7); line-height: 1.8; margin-bottom: 1rem; }
-    ul, ol { margin: 0.5rem 0 1rem 1.25rem; }
-    li { font-size: 0.9rem; color: rgba(240,237,232,0.7); line-height: 1.75; margin-bottom: 0.35rem; }
-    a { color: var(--orange-light); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    strong { color: var(--light); font-weight: 500; }
-    .highlight-box { background: rgba(244,92,43,0.07); border: 1px solid rgba(244,92,43,0.2); border-radius: 10px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
-    .highlight-box p { color: rgba(240,237,232,0.8); margin: 0; }
-    .warning-box { background: rgba(255,200,0,0.06); border: 1px solid rgba(255,200,0,0.2); border-radius: 10px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
-    .warning-box p { color: rgba(240,237,232,0.8); margin: 0; font-size: 0.85rem; }
-    footer { padding: 2.5rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; position: relative; z-index: 1; }
-    footer p { font-size: 0.8rem; color: var(--gray); }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { font-size: 0.8rem; color: var(--gray); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--light); }
-    @media (max-width: 640px) { nav { padding: 1rem 1.25rem; } .page-header { padding: 7rem 1.25rem 2.5rem; } .doc-nav { padding: 1rem 1.25rem; } .content-wrap { padding: 2.5rem 1.25rem 4rem; } footer { padding: 2rem 1.25rem; } }
+    :root { --indigo:#6366F1; --indigo-dark:#4F46E5; --indigo-bg:#EEF2FF; --indigo-border:#C7D2FE; --text:#0F172A; --text-muted:#64748B; --text-subtle:#94A3B8; --bg:#F8F7F4; --card-bg:#FFFFFF; --border:#E2E8F0; --border-light:#F1F5F9; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; font-weight:400; line-height:1.6; overflow-x:hidden; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; height:60px; padding:0 2.5rem; display:flex; align-items:center; justify-content:space-between; background:rgba(248,247,244,0.92); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+    .nav-logo { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.05rem; color:var(--text); text-decoration:none; letter-spacing:-0.02em; }
+    .nav-links { display:flex; align-items:center; gap:0.75rem; }
+    .nav-link { font-size:0.85rem; font-weight:500; color:var(--text-muted); text-decoration:none; padding:0.4rem 0.75rem; border-radius:7px; transition:all 0.15s ease; }
+    .nav-link:hover { color:var(--text); background:var(--border-light); }
+    .nav-btn { font-size:0.82rem; font-weight:600; color:white; background:var(--indigo); border:1px solid var(--indigo); padding:0.45rem 1rem; border-radius:8px; text-decoration:none; transition:background 0.15s ease; }
+    .nav-btn:hover { background:var(--indigo-dark); }
+    .page-header { padding:6rem 2.5rem 3rem; border-bottom:1px solid var(--border); background:var(--card-bg); }
+    .page-header-inner { max-width:800px; margin:0 auto; }
+    .breadcrumb { display:flex; align-items:center; gap:0.5rem; font-size:0.77rem; color:var(--text-subtle); margin-bottom:1.25rem; }
+    .breadcrumb a { color:var(--indigo); text-decoration:none; }
+    .breadcrumb a:hover { text-decoration:underline; }
+    .page-tag { display:inline-flex; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--indigo); background:var(--indigo-bg); border:1px solid var(--indigo-border); padding:0.22rem 0.65rem; border-radius:100px; margin-bottom:0.85rem; }
+    .page-header h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.75rem,4vw,2.75rem); font-weight:700; letter-spacing:-0.025em; color:var(--text); margin-bottom:0.4rem; }
+    .page-header .subtitle { font-size:0.87rem; color:var(--text-muted); }
+    .doc-nav { background:var(--card-bg); border-bottom:1px solid var(--border); padding:0.9rem 2.5rem; }
+    .doc-nav-inner { max-width:800px; margin:0 auto; display:flex; gap:0.5rem; flex-wrap:wrap; }
+    .doc-pill { font-size:0.78rem; font-weight:500; padding:0.35rem 0.9rem; border-radius:100px; text-decoration:none; border:1px solid var(--border); color:var(--text-muted); transition:all 0.15s ease; }
+    .doc-pill:hover { border-color:var(--indigo-border); color:var(--indigo); }
+    .doc-pill.active { background:var(--indigo-bg); border-color:var(--indigo-border); color:var(--indigo); font-weight:600; }
+    .content-wrap { max-width:800px; margin:0 auto; padding:3.5rem 2.5rem 6rem; }
+    .toc-box { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:1.75rem; margin-bottom:3rem; }
+    .toc-title { font-family:'Space Grotesk',sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--indigo); margin-bottom:1rem; }
+    .toc-list { list-style:none; display:flex; flex-direction:column; gap:0.35rem; }
+    .toc-list a { font-size:0.83rem; color:var(--text-muted); text-decoration:none; display:flex; align-items:center; gap:0.5rem; transition:color 0.15s; }
+    .toc-list a::before { content:'→'; color:var(--indigo); font-size:0.7rem; opacity:0.7; }
+    .toc-list a:hover { color:var(--indigo); }
+    .policy-section { margin-bottom:3rem; padding-bottom:3rem; border-bottom:1px solid var(--border-light); }
+    .policy-section:last-child { border-bottom:none; }
+    .section-num { font-size:0.67rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--indigo); margin-bottom:0.5rem; }
+    .section-title { font-family:'Space Grotesk',sans-serif; font-size:1.2rem; font-weight:700; color:var(--text); margin-bottom:1.1rem; letter-spacing:-0.015em; }
+    .section-sub { font-family:'Space Grotesk',sans-serif; font-size:0.95rem; font-weight:600; color:var(--text); margin:1.5rem 0 0.65rem; }
+    p { font-size:0.9rem; color:var(--text-muted); line-height:1.8; margin-bottom:0.9rem; }
+    ul,ol { margin:0.5rem 0 1rem 1.25rem; }
+    li { font-size:0.88rem; color:var(--text-muted); line-height:1.75; margin-bottom:0.3rem; }
+    a { color:var(--indigo); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    strong { color:var(--text); font-weight:500; }
+    .highlight-box { background:var(--indigo-bg); border:1px solid var(--indigo-border); border-radius:10px; padding:1.1rem 1.4rem; margin:1.1rem 0; }
+    .highlight-box p { color:var(--text-muted); margin:0; font-size:0.88rem; }
+    .warning-box { background:#FFFBEB; border:1px solid #FDE68A; border-radius:10px; padding:1.1rem 1.4rem; margin:1.1rem 0; }
+    .warning-box p { color:#92400E; margin:0; font-size:0.87rem; }
+    footer { padding:1.75rem 2.5rem; border-top:1px solid var(--border); background:var(--card-bg); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    footer p { font-size:0.75rem; color:var(--text-subtle); }
+    .footer-links { display:flex; gap:1.5rem; }
+    .footer-links a { font-size:0.75rem; color:var(--text-subtle); text-decoration:none; transition:color 0.15s; }
+    .footer-links a:hover { color:var(--indigo); }
+    @media (max-width:640px) { nav { padding:0 1.25rem; } .page-header { padding:5rem 1.25rem 2.5rem; } .doc-nav { padding:0.75rem 1.25rem; } .content-wrap { padding:2.5rem 1.25rem 4rem; } footer { padding:1.5rem 1.25rem; } }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-logo">Matthew<span>Maness</span></a>
-    <a href="teamtracker.html" class="nav-back">← SportsCalendar</a>
-  </nav>
+<nav>
+  <a href="index.html" class="nav-logo">Matthew Maness</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="teamtracker.html" class="nav-btn">TeamTracker</a>
+  </div>
+</nav>
 
-  <div class="page-header">
-    <div class="page-header-bg"></div>
+<div class="page-header">
+  <div class="page-header-inner">
     <div class="breadcrumb">
-      <a href="index.html">BasecampDev</a>
+      <a href="index.html">Home</a>
       <span>/</span>
-      <a href="teamtracker.html">SportsCalendar</a>
+      <a href="teamtracker.html">TeamTracker</a>
       <span>/</span>
-      <span>Terms & Conditions</span>
+      <span>Terms &amp; Conditions</span>
     </div>
     <div class="page-tag">Legal Document</div>
     <h1>Terms &amp; Conditions</h1>
     <p class="subtitle">TeamTracker – Sports Calendar &nbsp;·&nbsp; Last updated September 11, 2025</p>
   </div>
+</div>
 
-  <div class="doc-nav">
+<div class="doc-nav">
+  <div class="doc-nav-inner">
     <a href="teamtracker-privacy.html" class="doc-pill">Privacy Policy</a>
     <a href="teamtracker-eula.html" class="doc-pill">EULA</a>
     <a href="teamtracker-terms.html" class="doc-pill active">Terms &amp; Conditions</a>
   </div>
+</div>
 
-  <div class="content-wrap">
+<div class="content-wrap">
 
-    <div class="warning-box">
-      <p>⚠️ Please read these Legal Terms carefully before using the Services. By accessing or using TeamTracker – Sports Calendar, you agree to be bound by all of these Legal Terms. IF YOU DO NOT AGREE, PLEASE DISCONTINUE USE IMMEDIATELY.</p>
-    </div>
-
-    <div class="toc-box">
-      <div class="toc-title">Table of Contents</div>
-      <ul class="toc-list">
-        <li><a href="#t1">1. Our Services</a></li>
-        <li><a href="#t2">2. Intellectual Property Rights</a></li>
-        <li><a href="#t3">3. User Representations</a></li>
-        <li><a href="#t4">4. User Registration</a></li>
-        <li><a href="#t5">5. Purchases and Payment</a></li>
-        <li><a href="#t6">6. Subscriptions</a></li>
-        <li><a href="#t7">7. Refund Policy</a></li>
-        <li><a href="#t8">8. Prohibited Activities</a></li>
-        <li><a href="#t9">9. User Generated Contributions</a></li>
-        <li><a href="#t10">10. Contribution License</a></li>
-        <li><a href="#t11">11. Mobile Application License</a></li>
-        <li><a href="#t12">12. Social Media</a></li>
-        <li><a href="#t13">13. Services Management</a></li>
-        <li><a href="#t14">14. Privacy Policy</a></li>
-        <li><a href="#t15">15. Term and Termination</a></li>
-        <li><a href="#t16">16. Modifications and Interruptions</a></li>
-        <li><a href="#t17">17. Governing Law</a></li>
-        <li><a href="#t18">18. Dispute Resolution</a></li>
-        <li><a href="#t19">19–22. Corrections, Disclaimer, Limitations, Indemnification</a></li>
-        <li><a href="#t23">23–26. User Data, Electronic Communications, California, Misc.</a></li>
-        <li><a href="#t27">27. Subscriptions & Payments</a></li>
-        <li><a href="#t28">28. Prohibited Activities (Additional)</a></li>
-        <li><a href="#t29">29. Contact Us</a></li>
-      </ul>
-    </div>
-
-    <div class="highlight-box">
-      <p>We are <strong>TeamTracker – Sports Calendar</strong>. We operate the mobile application <strong>TeamTracker – Sports Calendar</strong>, as well as any other related products and services that refer or link to these Legal Terms. You can contact us by phone at 2817938194, or email at <a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a>.</p>
-    </div>
-
-    <div class="policy-section" id="t1">
-      <div class="section-num">Section 1</div>
-      <div class="section-title">Our Services</div>
-      <p>The information provided when using the Services is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country.</p>
-      <p>The Services are not tailored to comply with industry-specific regulations (HIPAA, FISMA, etc.), so if your interactions would be subjected to such laws, you may not use the Services.</p>
-    </div>
-
-    <div class="policy-section" id="t2">
-      <div class="section-num">Section 2</div>
-      <div class="section-title">Intellectual Property Rights</div>
-      <div class="section-sub">Our Intellectual Property</div>
-      <p>We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, the "Content"), as well as the trademarks, service marks, and logos contained therein (the "Marks"). Our Content and Marks are protected by copyright and trademark laws in the United States and around the world.</p>
-      <div class="section-sub">Your Use of Our Services</div>
-      <p>Subject to your compliance with these Legal Terms, we grant you a non-exclusive, non-transferable, revocable license to access the Services and download or print a copy of any portion of the Content to which you have properly gained access, solely for your personal, non-commercial use.</p>
-      <p>Except as set out in this section, no part of the Services and no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever, without our express prior written permission.</p>
-    </div>
-
-    <div class="policy-section" id="t3">
-      <div class="section-num">Section 3</div>
-      <div class="section-title">User Representations</div>
-      <p>By using the Services, you represent and warrant that: (1) all registration information you submit will be true, accurate, current, and complete; (2) you will maintain the accuracy of such information and promptly update it as necessary; (3) you have the legal capacity and you agree to comply with these Legal Terms; (4) you are not under the age of 13; (5) you are not a minor in the jurisdiction in which you reside, or if a minor, you have received parental permission; (6) you will not access the Services through automated or non-human means; (7) you will not use the Services for any illegal or unauthorized purpose; and (8) your use of the Services will not violate any applicable law or regulation.</p>
-    </div>
-
-    <div class="policy-section" id="t4">
-      <div class="section-num">Section 4</div>
-      <div class="section-title">User Registration</div>
-      <p>You may be required to register to use the Services. You agree to keep your password confidential and will be responsible for all use of your account and password. We reserve the right to remove, reclaim, or change a username you select if we determine, in our sole discretion, that such username is inappropriate, obscene, or otherwise objectionable.</p>
-    </div>
-
-    <div class="policy-section" id="t5">
-      <div class="section-num">Section 5</div>
-      <div class="section-title">Purchases and Payment</div>
-      <p>We accept the following forms of payment: Visa, Mastercard, American Express, and Discover.</p>
-      <p>You agree to provide current, complete, and accurate purchase and account information for all purchases made via the Services. You further agree to promptly update account and payment information so that we can complete your transactions. Sales tax will be added to the price of purchases as deemed required by us. We may change prices at any time. All payments shall be in US dollars.</p>
-      <p>We reserve the right to refuse any order placed through the Services. We may, in our sole discretion, limit or cancel quantities purchased per person, per household, or per order.</p>
-    </div>
-
-    <div class="policy-section" id="t6">
-      <div class="section-num">Section 6</div>
-      <div class="section-title">Subscriptions</div>
-      <div class="section-sub">Billing and Renewal</div>
-      <p>Your subscription will continue and automatically renew unless canceled. You consent to our charging your payment method on a recurring basis without requiring your prior approval for each recurring charge, until such time as you cancel the applicable order.</p>
-      <div class="section-sub">Free Trial</div>
-      <p>We offer a 3-day free trial to new users who register with the Services. The account will be charged according to the user's chosen subscription at the end of the free trial.</p>
-      <div class="section-sub">Cancellation</div>
-      <p>You can cancel your subscription at any time by logging into your account. Your cancellation will take effect at the end of the current paid term. If you have any questions or are unsatisfied with our Services, please email us at <a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a>.</p>
-      <div class="section-sub">Fee Changes</div>
-      <p>We may, from time to time, make changes to the subscription fee and will communicate any price changes to you in accordance with applicable law.</p>
-    </div>
-
-    <div class="policy-section" id="t7">
-      <div class="section-num">Section 7</div>
-      <div class="section-title">Refund Policy</div>
-      <p>All sales are final and no refund will be issued.</p>
-    </div>
-
-    <div class="policy-section" id="t8">
-      <div class="section-num">Section 8</div>
-      <div class="section-title">Prohibited Activities</div>
-      <p>You may not access or use the Services for any purpose other than that for which we make the Services available. The Services may not be used in connection with any commercial endeavors except those that are specifically endorsed or approved by us.</p>
-      <p>As a user of the Services, you agree not to:</p>
-      <ul>
-        <li>Systematically retrieve data or other content from the Services to create or compile a collection, database, or directory without written permission from us</li>
-        <li>Trick, defraud, or mislead us and other users, especially in any attempt to learn sensitive account information such as user passwords</li>
-        <li>Circumvent, disable, or otherwise interfere with security-related features of the Services</li>
-        <li>Disparage, tarnish, or otherwise harm, in our opinion, us and/or the Services</li>
-        <li>Use any information obtained from the Services to harass, abuse, or harm another person</li>
-        <li>Make improper use of our support services or submit false reports of abuse or misconduct</li>
-        <li>Use the Services in a manner inconsistent with any applicable laws or regulations</li>
-        <li>Engage in unauthorized framing of or linking to the Services</li>
-        <li>Upload or transmit viruses, Trojan horses, or other malicious material</li>
-        <li>Engage in any automated use of the system, such as using scripts or data mining tools</li>
-        <li>Delete the copyright or other proprietary rights notice from any Content</li>
-        <li>Attempt to impersonate another user or person</li>
-        <li>Interfere with, disrupt, or create an undue burden on the Services</li>
-        <li>Harass, annoy, intimidate, or threaten any of our employees or agents</li>
-        <li>Attempt to bypass any security measures of the Services</li>
-        <li>Copy or adapt the Services' software</li>
-        <li>Decipher, decompile, disassemble, or reverse engineer any of the software</li>
-        <li>Use the Services as part of any effort to compete with us</li>
-        <li>Use the Services to advertise or offer to sell goods and services</li>
-        <li>Sell or otherwise transfer your profile</li>
-      </ul>
-    </div>
-
-    <div class="policy-section" id="t9">
-      <div class="section-num">Section 9</div>
-      <div class="section-title">User Generated Contributions</div>
-      <p>The Services do not offer users the ability to submit or post content. However, we may provide you with the opportunity to create, submit, post, display, transmit, or broadcast content and materials to us or on the Services. When you create or make available any Contributions, you represent and warrant that your Contributions are not false, inaccurate, misleading, illegal, harassing, harmful, obscene, or otherwise objectionable, and that they do not violate any applicable law, the privacy or publicity rights of any third party, or any provision of these Legal Terms.</p>
-    </div>
-
-    <div class="policy-section" id="t10">
-      <div class="section-num">Section 10</div>
-      <div class="section-title">Contribution License</div>
-      <p>You and the Services agree that we may access, store, process, and use any information and personal data that you provide following the terms of the Privacy Policy and your choices.</p>
-      <p>By submitting suggestions or other feedback regarding the Services, you agree that we can use and share such feedback for any purpose without compensation to you.</p>
-      <p>We do not assert any ownership over your Contributions. You retain full ownership of all of your Contributions and any intellectual property rights or other proprietary rights associated with your Contributions.</p>
-    </div>
-
-    <div class="policy-section" id="t11">
-      <div class="section-num">Section 11</div>
-      <div class="section-title">Mobile Application License</div>
-      <div class="section-sub">Use License</div>
-      <p>If you access the Services via the App, then we grant you a revocable, non-exclusive, non-transferable, limited right to install and use the App on wireless electronic devices owned or controlled by you, and to access and use the App strictly in accordance with the terms and conditions of this mobile application license. You shall not: (1) decompile, reverse engineer, disassemble, or decrypt the App; (2) make any modification, adaptation, or derivative work from the App; (3) violate any applicable laws in connection with your access or use; (4) remove, alter, or obscure any proprietary notice; (5) use the App for revenue-generating or commercial purposes; (6) make the App available over a network permitting access by multiple devices; (7) use the App to send automated queries or unsolicited commercial email; or (8) use any proprietary information or interfaces of the App in the design of other applications.</p>
-      <div class="section-sub">Apple and Android Devices</div>
-      <p>The following terms apply when you use the App obtained from the Apple Store or Google Play (each an "App Distributor"): (1) the license granted to you for our App is limited to use on a device that utilizes the Apple iOS or Android operating systems; (2) we are responsible for providing any maintenance and support services with respect to the App; (3) in the event of any failure of the App to conform to any applicable warranty, you may notify the App Distributor and the App Distributor may refund the purchase price; (4) you represent and warrant that you are not located in a country subject to a US government embargo; and (5) you acknowledge and agree that the App Distributors are third-party beneficiaries of this mobile application license.</p>
-    </div>
-
-    <div class="policy-section" id="t12">
-      <div class="section-num">Section 12</div>
-      <div class="section-title">Social Media</div>
-      <p>As part of the functionality of the Services, you may link your account with online accounts you have with third-party service providers by providing your Third-Party Account login information through the Services. By granting us access to any Third-Party Accounts, we may access, make available, and store any content that you have provided to and stored in your Third-Party Account so that it is available on and through the Services.</p>
-      <p>PLEASE NOTE THAT YOUR RELATIONSHIP WITH THE THIRD-PARTY SERVICE PROVIDERS ASSOCIATED WITH YOUR THIRD-PARTY ACCOUNTS IS GOVERNED SOLELY BY YOUR AGREEMENT(S) WITH SUCH THIRD-PARTY SERVICE PROVIDERS.</p>
-    </div>
-
-    <div class="policy-section" id="t13">
-      <div class="section-num">Section 13</div>
-      <div class="section-title">Services Management</div>
-      <p>We reserve the right, but not the obligation, to: (1) monitor the Services for violations of these Legal Terms; (2) take appropriate legal action against anyone who violates the law or these Legal Terms; (3) in our sole discretion, refuse, restrict access to, limit the availability of, or disable any of your Contributions; (4) remove from the Services or otherwise disable all files and content that are excessive in size or burdensome to our systems; and (5) otherwise manage the Services in a manner designed to protect our rights and property.</p>
-    </div>
-
-    <div class="policy-section" id="t14">
-      <div class="section-num">Section 14</div>
-      <div class="section-title">Privacy Policy</div>
-      <p>We care about data privacy and security. Please review our <a href="teamtracker-privacy.html">Privacy Policy</a>. By using the Services, you agree to be bound by our Privacy Policy, which is incorporated into these Legal Terms. Please be advised the Services are hosted in the United States.</p>
-      <p>Further, we do not knowingly accept, request, or solicit information from children or knowingly market to children. In accordance with the U.S. Children's Online Privacy Protection Act, if we receive actual knowledge that anyone under the age of 13 has provided personal information to us without the requisite and verifiable parental consent, we will delete that information as quickly as is reasonably practical.</p>
-    </div>
-
-    <div class="policy-section" id="t15">
-      <div class="section-num">Section 15</div>
-      <div class="section-title">Term and Termination</div>
-      <p>These Legal Terms shall remain in full force and effect while you use the Services. WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR LIABILITY, DENY ACCESS TO AND USE OF THE SERVICES TO ANY PERSON FOR ANY REASON OR FOR NO REASON, INCLUDING WITHOUT LIMITATION FOR BREACH OF ANY REPRESENTATION, WARRANTY, OR COVENANT CONTAINED IN THESE LEGAL TERMS OR OF ANY APPLICABLE LAW OR REGULATION.</p>
-      <p>If we terminate or suspend your account for any reason, you are prohibited from registering and creating a new account under your name, a fake or borrowed name, or the name of any third party.</p>
-    </div>
-
-    <div class="policy-section" id="t16">
-      <div class="section-num">Section 16</div>
-      <div class="section-title">Modifications and Interruptions</div>
-      <p>We reserve the right to change, modify, or remove the contents of the Services at any time or for any reason at our sole discretion without notice. We will not be liable to you or any third party for any modification, price change, suspension, or discontinuance of the Services.</p>
-      <p>We cannot guarantee the Services will be available at all times. We may experience hardware, software, or other problems or need to perform maintenance, resulting in interruptions, delays, or errors.</p>
-    </div>
-
-    <div class="policy-section" id="t17">
-      <div class="section-num">Section 17</div>
-      <div class="section-title">Governing Law</div>
-      <p>These Legal Terms and your use of the Services are governed by and construed in accordance with the laws of the State of Colorado applicable to agreements made and to be entirely performed within the State of Colorado, without regard to its conflict of law principles.</p>
-    </div>
-
-    <div class="policy-section" id="t18">
-      <div class="section-num">Section 18</div>
-      <div class="section-title">Dispute Resolution</div>
-      <div class="section-sub">Informal Negotiations</div>
-      <p>To expedite resolution and control the cost of any dispute, controversy, or claim related to these Legal Terms, the Parties agree to first attempt to negotiate any Dispute informally for at least thirty (30) days before initiating arbitration.</p>
-      <div class="section-sub">Binding Arbitration</div>
-      <p>If the Parties are unable to resolve a Dispute through informal negotiations, the Dispute will be finally and exclusively resolved by binding arbitration. YOU UNDERSTAND THAT WITHOUT THIS PROVISION, YOU WOULD HAVE THE RIGHT TO SUE IN COURT AND HAVE A JURY TRIAL. The arbitration shall be commenced and conducted under the Commercial Arbitration Rules of the American Arbitration Association (AAA). The arbitration will take place in Jefferson, Colorado.</p>
-      <div class="section-sub">Restrictions</div>
-      <p>The Parties agree that any arbitration shall be limited to the Dispute between the Parties individually. No arbitration shall be joined with any other proceeding; there is no right or authority for any Dispute to be arbitrated on a class-action basis.</p>
-    </div>
-
-    <div class="policy-section" id="t19">
-      <div class="section-num">Sections 19–22</div>
-      <div class="section-title">Corrections, Disclaimer, Limitations of Liability &amp; Indemnification</div>
-      <div class="section-sub">Corrections</div>
-      <p>There may be information on the Services that contains typographical errors, inaccuracies, or omissions. We reserve the right to correct any errors, inaccuracies, or omissions and to change or update the information at any time, without prior notice.</p>
-      <div class="section-sub">Disclaimer</div>
-      <p>THE SERVICES ARE PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
-      <div class="section-sub">Limitations of Liability</div>
-      <p>IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFIT, LOST REVENUE, LOSS OF DATA, OR OTHER DAMAGES ARISING FROM YOUR USE OF THE SERVICES. OUR LIABILITY TO YOU WILL AT ALL TIMES BE LIMITED TO THE AMOUNT PAID, IF ANY, BY YOU TO US DURING THE SIX (6) MONTH PERIOD PRIOR TO ANY CAUSE OF ACTION ARISING.</p>
-      <div class="section-sub">Indemnification</div>
-      <p>You agree to defend, indemnify, and hold us harmless, including our subsidiaries, affiliates, and all of our respective officers, agents, partners, and employees, from and against any loss, damage, liability, claim, or demand, including reasonable attorneys' fees and expenses, made by any third party due to or arising out of: (1) use of the Services; (2) breach of these Legal Terms; (3) any breach of your representations and warranties; (4) your violation of the rights of a third party; or (5) any overt harmful act toward any other user of the Services with whom you connected via the Services.</p>
-    </div>
-
-    <div class="policy-section" id="t23">
-      <div class="section-num">Sections 23–26</div>
-      <div class="section-title">User Data, Electronic Communications, California &amp; Miscellaneous</div>
-      <div class="section-sub">User Data</div>
-      <p>We will maintain certain data that you transmit to the Services for the purpose of managing the performance of the Services, as well as data relating to your use of the Services. You are solely responsible for all data that you transmit or that relates to any activity you have undertaken using the Services.</p>
-      <div class="section-sub">Electronic Communications, Transactions, and Signatures</div>
-      <p>Visiting the Services, sending us emails, and completing online forms constitute electronic communications. You consent to receive electronic communications, and you agree that all agreements, notices, disclosures, and other communications we provide to you electronically satisfy any legal requirement that such communication be in writing.</p>
-      <div class="section-sub">California Users and Residents</div>
-      <p>If any complaint with us is not satisfactorily resolved, you can contact the Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs in writing at 1625 North Market Blvd., Suite N 112, Sacramento, California 95834 or by telephone at (800) 952-5210 or (916) 445-1254.</p>
-      <div class="section-sub">Miscellaneous</div>
-      <p>These Legal Terms and any policies or operating rules posted by us on the Services constitute the entire agreement and understanding between you and us. Our failure to exercise or enforce any right or provision of these Legal Terms shall not operate as a waiver of such right or provision.</p>
-    </div>
-
-    <div class="policy-section" id="t27">
-      <div class="section-num">Section 27</div>
-      <div class="section-title">Subscriptions &amp; Payments</div>
-      <p>All premium subscriptions are managed via RevenueCat and processed through the Apple App Store or Google Play. Payment methods are determined by the store. We do not directly store credit card information. Users may cancel subscriptions at any time through their app store account.</p>
-    </div>
-
-    <div class="policy-section" id="t28">
-      <div class="section-num">Section 28</div>
-      <div class="section-title">Prohibited Activities (Additional)</div>
-      <p>Users may not attempt to bypass or manipulate subscription features, reverse-engineer the app, share accounts, or use the app for illegal purposes.</p>
-    </div>
-
-    <div class="policy-section" id="t29">
-      <div class="section-num">Section 29</div>
-      <div class="section-title">Contact Us</div>
-      <p>In order to resolve a complaint regarding the Services or to receive further information regarding use of the Services, please contact us at:</p>
-      <div class="highlight-box">
-        <p><strong>TeamTracker – Sports Calendar</strong><br>United States<br>Phone: 2817938194<br><a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a></p>
-      </div>
-    </div>
-
+  <div class="warning-box">
+    <p>⚠️ Please read these Legal Terms carefully before using the Services. By accessing or using TeamTracker – Sports Calendar, you agree to be bound by all of these Legal Terms. IF YOU DO NOT AGREE, PLEASE DISCONTINUE USE IMMEDIATELY.</p>
   </div>
 
-  <footer>
-    <p>© 2025 Matthew Maness. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="teamtracker.html">← SportsCalendar</a>
-      <a href="index.html">All Apps</a>
-      <a href="mailto:basecampdevs@gmail.com">Contact</a>
+  <div class="toc-box">
+    <div class="toc-title">Table of Contents</div>
+    <ul class="toc-list">
+      <li><a href="#t1">1. Our Services</a></li>
+      <li><a href="#t2">2. Intellectual Property Rights</a></li>
+      <li><a href="#t3">3. User Representations</a></li>
+      <li><a href="#t4">4. User Registration</a></li>
+      <li><a href="#t5">5. Purchases and Payment</a></li>
+      <li><a href="#t6">6. Subscriptions</a></li>
+      <li><a href="#t7">7. Refund Policy</a></li>
+      <li><a href="#t8">8. Prohibited Activities</a></li>
+      <li><a href="#t9">9. User Generated Contributions</a></li>
+      <li><a href="#t10">10. Contribution License</a></li>
+      <li><a href="#t11">11. Mobile Application License</a></li>
+      <li><a href="#t12">12. Social Media</a></li>
+      <li><a href="#t13">13. Services Management</a></li>
+      <li><a href="#t14">14. Privacy Policy</a></li>
+      <li><a href="#t15">15. Term and Termination</a></li>
+      <li><a href="#t16">16. Modifications and Interruptions</a></li>
+      <li><a href="#t17">17. Governing Law</a></li>
+      <li><a href="#t18">18. Dispute Resolution</a></li>
+      <li><a href="#t19">19–22. Corrections, Disclaimer, Limitations, Indemnification</a></li>
+      <li><a href="#t23">23–26. User Data, Electronic Communications, California, Misc.</a></li>
+      <li><a href="#t27">27. Subscriptions &amp; Payments</a></li>
+      <li><a href="#t28">28. Prohibited Activities (Additional)</a></li>
+      <li><a href="#t29">29. Contact Us</a></li>
+    </ul>
+  </div>
+
+  <div class="highlight-box">
+    <p>We are <strong>TeamTracker – Sports Calendar</strong>. We operate the mobile application <strong>TeamTracker – Sports Calendar</strong>, as well as any other related products and services that refer or link to these Legal Terms. You can contact us by email at <a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a>.</p>
+  </div>
+
+  <div class="policy-section" id="t1">
+    <div class="section-num">Section 1</div>
+    <div class="section-title">Our Services</div>
+    <p>The information provided when using the Services is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would subject us to any registration requirement within such jurisdiction or country.</p>
+    <p>The Services are not tailored to comply with industry-specific regulations (HIPAA, FISMA, etc.), so if your interactions would be subjected to such laws, you may not use the Services.</p>
+  </div>
+
+  <div class="policy-section" id="t2">
+    <div class="section-num">Section 2</div>
+    <div class="section-title">Intellectual Property Rights</div>
+    <div class="section-sub">Our Intellectual Property</div>
+    <p>We are the owner or the licensee of all intellectual property rights in our Services, including all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics in the Services (collectively, the "Content"), as well as the trademarks, service marks, and logos contained therein (the "Marks"). Our Content and Marks are protected by copyright and trademark laws in the United States and around the world.</p>
+    <div class="section-sub">Your Use of Our Services</div>
+    <p>Subject to your compliance with these Legal Terms, we grant you a non-exclusive, non-transferable, revocable license to access the Services and download or print a copy of any portion of the Content to which you have properly gained access, solely for your personal, non-commercial use.</p>
+    <p>Except as set out in this section, no part of the Services and no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose whatsoever, without our express prior written permission.</p>
+  </div>
+
+  <div class="policy-section" id="t3">
+    <div class="section-num">Section 3</div>
+    <div class="section-title">User Representations</div>
+    <p>By using the Services, you represent and warrant that: (1) all registration information you submit will be true, accurate, current, and complete; (2) you will maintain the accuracy of such information and promptly update it as necessary; (3) you have the legal capacity and you agree to comply with these Legal Terms; (4) you are not under the age of 13; (5) you are not a minor in the jurisdiction in which you reside, or if a minor, you have received parental permission; (6) you will not access the Services through automated or non-human means; (7) you will not use the Services for any illegal or unauthorized purpose; and (8) your use of the Services will not violate any applicable law or regulation.</p>
+  </div>
+
+  <div class="policy-section" id="t4">
+    <div class="section-num">Section 4</div>
+    <div class="section-title">User Registration</div>
+    <p>You may be required to register to use the Services. You agree to keep your password confidential and will be responsible for all use of your account and password. We reserve the right to remove, reclaim, or change a username you select if we determine, in our sole discretion, that such username is inappropriate, obscene, or otherwise objectionable.</p>
+  </div>
+
+  <div class="policy-section" id="t5">
+    <div class="section-num">Section 5</div>
+    <div class="section-title">Purchases and Payment</div>
+    <p>We accept the following forms of payment: Visa, Mastercard, American Express, and Discover.</p>
+    <p>You agree to provide current, complete, and accurate purchase and account information for all purchases made via the Services. You further agree to promptly update account and payment information so that we can complete your transactions. Sales tax will be added to the price of purchases as deemed required by us. We may change prices at any time. All payments shall be in US dollars.</p>
+    <p>We reserve the right to refuse any order placed through the Services. We may, in our sole discretion, limit or cancel quantities purchased per person, per household, or per order.</p>
+  </div>
+
+  <div class="policy-section" id="t6">
+    <div class="section-num">Section 6</div>
+    <div class="section-title">Subscriptions</div>
+    <div class="section-sub">Billing and Renewal</div>
+    <p>Your subscription will continue and automatically renew unless canceled. You consent to our charging your payment method on a recurring basis without requiring your prior approval for each recurring charge, until such time as you cancel the applicable order.</p>
+    <div class="section-sub">Free Trial</div>
+    <p>We offer a 3-day free trial to new users who register with the Services. The account will be charged according to the user's chosen subscription at the end of the free trial.</p>
+    <div class="section-sub">Cancellation</div>
+    <p>You can cancel your subscription at any time by logging into your account. Your cancellation will take effect at the end of the current paid term. If you have any questions or are unsatisfied with our Services, please email us at <a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a>.</p>
+    <div class="section-sub">Fee Changes</div>
+    <p>We may, from time to time, make changes to the subscription fee and will communicate any price changes to you in accordance with applicable law.</p>
+  </div>
+
+  <div class="policy-section" id="t7">
+    <div class="section-num">Section 7</div>
+    <div class="section-title">Refund Policy</div>
+    <p>All sales are final and no refund will be issued.</p>
+  </div>
+
+  <div class="policy-section" id="t8">
+    <div class="section-num">Section 8</div>
+    <div class="section-title">Prohibited Activities</div>
+    <p>You may not access or use the Services for any purpose other than that for which we make the Services available. As a user of the Services, you agree not to:</p>
+    <ul>
+      <li>Systematically retrieve data or other content from the Services to create or compile a collection, database, or directory without written permission</li>
+      <li>Trick, defraud, or mislead us and other users, especially in any attempt to learn sensitive account information</li>
+      <li>Circumvent, disable, or otherwise interfere with security-related features of the Services</li>
+      <li>Disparage, tarnish, or otherwise harm us and/or the Services</li>
+      <li>Use any information obtained from the Services to harass, abuse, or harm another person</li>
+      <li>Use the Services in a manner inconsistent with any applicable laws or regulations</li>
+      <li>Upload or transmit viruses, Trojan horses, or other malicious material</li>
+      <li>Engage in any automated use of the system, such as using scripts or data mining tools</li>
+      <li>Attempt to impersonate another user or person</li>
+      <li>Decipher, decompile, disassemble, or reverse engineer any of the software comprising the Services</li>
+      <li>Use the Services to advertise or offer to sell goods and services</li>
+      <li>Sell or otherwise transfer your profile</li>
+    </ul>
+  </div>
+
+  <div class="policy-section" id="t9">
+    <div class="section-num">Section 9</div>
+    <div class="section-title">User Generated Contributions</div>
+    <p>The Services do not offer users the ability to submit or post content. However, we may provide you with the opportunity to create, submit, post, display, transmit, or broadcast content and materials to us or on the Services. When you create or make available any Contributions, you represent and warrant that your Contributions are not false, inaccurate, misleading, illegal, harassing, harmful, obscene, or otherwise objectionable, and that they do not violate any applicable law, the privacy or publicity rights of any third party, or any provision of these Legal Terms.</p>
+  </div>
+
+  <div class="policy-section" id="t10">
+    <div class="section-num">Section 10</div>
+    <div class="section-title">Contribution License</div>
+    <p>You and the Services agree that we may access, store, process, and use any information and personal data that you provide following the terms of the Privacy Policy and your choices.</p>
+    <p>By submitting suggestions or other feedback regarding the Services, you agree that we can use and share such feedback for any purpose without compensation to you.</p>
+    <p>We do not assert any ownership over your Contributions. You retain full ownership of all of your Contributions and any intellectual property rights or other proprietary rights associated with your Contributions.</p>
+  </div>
+
+  <div class="policy-section" id="t11">
+    <div class="section-num">Section 11</div>
+    <div class="section-title">Mobile Application License</div>
+    <div class="section-sub">Use License</div>
+    <p>If you access the Services via the App, then we grant you a revocable, non-exclusive, non-transferable, limited right to install and use the App on wireless electronic devices owned or controlled by you, and to access and use the App strictly in accordance with the terms and conditions of this mobile application license.</p>
+    <div class="section-sub">Apple and Android Devices</div>
+    <p>The following terms apply when you use the App obtained from the Apple Store or Google Play (each an "App Distributor"): (1) the license granted to you for our App is limited to use on a device that utilizes the Apple iOS or Android operating systems; (2) we are responsible for providing any maintenance and support services with respect to the App; (3) in the event of any failure of the App to conform to any applicable warranty, you may notify the App Distributor and the App Distributor may refund the purchase price; and (4) you acknowledge and agree that the App Distributors are third-party beneficiaries of this mobile application license.</p>
+  </div>
+
+  <div class="policy-section" id="t12">
+    <div class="section-num">Section 12</div>
+    <div class="section-title">Social Media</div>
+    <p>As part of the functionality of the Services, you may link your account with online accounts you have with third-party service providers by providing your Third-Party Account login information through the Services. By granting us access to any Third-Party Accounts, we may access, make available, and store any content that you have provided to and stored in your Third-Party Account so that it is available on and through the Services.</p>
+    <p>PLEASE NOTE THAT YOUR RELATIONSHIP WITH THE THIRD-PARTY SERVICE PROVIDERS ASSOCIATED WITH YOUR THIRD-PARTY ACCOUNTS IS GOVERNED SOLELY BY YOUR AGREEMENT(S) WITH SUCH THIRD-PARTY SERVICE PROVIDERS.</p>
+  </div>
+
+  <div class="policy-section" id="t13">
+    <div class="section-num">Section 13</div>
+    <div class="section-title">Services Management</div>
+    <p>We reserve the right, but not the obligation, to: (1) monitor the Services for violations of these Legal Terms; (2) take appropriate legal action against anyone who violates the law or these Legal Terms; (3) in our sole discretion, refuse, restrict access to, limit the availability of, or disable any of your Contributions; (4) remove from the Services or otherwise disable all files and content that are excessive in size or burdensome to our systems; and (5) otherwise manage the Services in a manner designed to protect our rights and property.</p>
+  </div>
+
+  <div class="policy-section" id="t14">
+    <div class="section-num">Section 14</div>
+    <div class="section-title">Privacy Policy</div>
+    <p>We care about data privacy and security. Please review our <a href="teamtracker-privacy.html">Privacy Policy</a>. By using the Services, you agree to be bound by our Privacy Policy, which is incorporated into these Legal Terms.</p>
+    <p>We do not knowingly accept, request, or solicit information from children or knowingly market to children. In accordance with the U.S. Children's Online Privacy Protection Act, if we receive actual knowledge that anyone under the age of 13 has provided personal information to us without the requisite and verifiable parental consent, we will delete that information as quickly as is reasonably practical.</p>
+  </div>
+
+  <div class="policy-section" id="t15">
+    <div class="section-num">Section 15</div>
+    <div class="section-title">Term and Termination</div>
+    <p>These Legal Terms shall remain in full force and effect while you use the Services. WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR LIABILITY, DENY ACCESS TO AND USE OF THE SERVICES TO ANY PERSON FOR ANY REASON OR FOR NO REASON, INCLUDING WITHOUT LIMITATION FOR BREACH OF ANY REPRESENTATION, WARRANTY, OR COVENANT CONTAINED IN THESE LEGAL TERMS OR OF ANY APPLICABLE LAW OR REGULATION.</p>
+    <p>If we terminate or suspend your account for any reason, you are prohibited from registering and creating a new account under your name, a fake or borrowed name, or the name of any third party.</p>
+  </div>
+
+  <div class="policy-section" id="t16">
+    <div class="section-num">Section 16</div>
+    <div class="section-title">Modifications and Interruptions</div>
+    <p>We reserve the right to change, modify, or remove the contents of the Services at any time or for any reason at our sole discretion without notice. We will not be liable to you or any third party for any modification, price change, suspension, or discontinuance of the Services.</p>
+    <p>We cannot guarantee the Services will be available at all times. We may experience hardware, software, or other problems or need to perform maintenance, resulting in interruptions, delays, or errors.</p>
+  </div>
+
+  <div class="policy-section" id="t17">
+    <div class="section-num">Section 17</div>
+    <div class="section-title">Governing Law</div>
+    <p>These Legal Terms and your use of the Services are governed by and construed in accordance with the laws of the State of Colorado applicable to agreements made and to be entirely performed within the State of Colorado, without regard to its conflict of law principles.</p>
+  </div>
+
+  <div class="policy-section" id="t18">
+    <div class="section-num">Section 18</div>
+    <div class="section-title">Dispute Resolution</div>
+    <div class="section-sub">Informal Negotiations</div>
+    <p>To expedite resolution and control the cost of any dispute, controversy, or claim related to these Legal Terms, the Parties agree to first attempt to negotiate any Dispute informally for at least thirty (30) days before initiating arbitration.</p>
+    <div class="section-sub">Binding Arbitration</div>
+    <p>If the Parties are unable to resolve a Dispute through informal negotiations, the Dispute will be finally and exclusively resolved by binding arbitration. The arbitration shall be commenced and conducted under the Commercial Arbitration Rules of the American Arbitration Association (AAA). The arbitration will take place in Jefferson, Colorado.</p>
+    <div class="section-sub">Restrictions</div>
+    <p>The Parties agree that any arbitration shall be limited to the Dispute between the Parties individually. No arbitration shall be joined with any other proceeding; there is no right or authority for any Dispute to be arbitrated on a class-action basis.</p>
+  </div>
+
+  <div class="policy-section" id="t19">
+    <div class="section-num">Sections 19–22</div>
+    <div class="section-title">Corrections, Disclaimer, Limitations of Liability &amp; Indemnification</div>
+    <div class="section-sub">Corrections</div>
+    <p>There may be information on the Services that contains typographical errors, inaccuracies, or omissions. We reserve the right to correct any errors, inaccuracies, or omissions and to change or update the information at any time, without prior notice.</p>
+    <div class="section-sub">Disclaimer</div>
+    <p>THE SERVICES ARE PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+    <div class="section-sub">Limitations of Liability</div>
+    <p>IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFIT, LOST REVENUE, LOSS OF DATA, OR OTHER DAMAGES ARISING FROM YOUR USE OF THE SERVICES.</p>
+    <div class="section-sub">Indemnification</div>
+    <p>You agree to defend, indemnify, and hold us harmless, including our subsidiaries, affiliates, and all of our respective officers, agents, partners, and employees, from and against any loss, damage, liability, claim, or demand, including reasonable attorneys' fees and expenses, made by any third party due to or arising out of: (1) use of the Services; (2) breach of these Legal Terms; (3) any breach of your representations and warranties; (4) your violation of the rights of a third party; or (5) any overt harmful act toward any other user of the Services.</p>
+  </div>
+
+  <div class="policy-section" id="t23">
+    <div class="section-num">Sections 23–26</div>
+    <div class="section-title">User Data, Electronic Communications, California &amp; Miscellaneous</div>
+    <div class="section-sub">User Data</div>
+    <p>We will maintain certain data that you transmit to the Services for the purpose of managing the performance of the Services, as well as data relating to your use of the Services. You are solely responsible for all data that you transmit or that relates to any activity you have undertaken using the Services.</p>
+    <div class="section-sub">Electronic Communications, Transactions, and Signatures</div>
+    <p>Visiting the Services, sending us emails, and completing online forms constitute electronic communications. You consent to receive electronic communications, and you agree that all agreements, notices, disclosures, and other communications we provide to you electronically satisfy any legal requirement that such communication be in writing.</p>
+    <div class="section-sub">California Users and Residents</div>
+    <p>If any complaint with us is not satisfactorily resolved, you can contact the Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs in writing at 1625 North Market Blvd., Suite N 112, Sacramento, California 95834 or by telephone at (800) 952-5210 or (916) 445-1254.</p>
+    <div class="section-sub">Miscellaneous</div>
+    <p>These Legal Terms and any policies or operating rules posted by us on the Services constitute the entire agreement and understanding between you and us. Our failure to exercise or enforce any right or provision of these Legal Terms shall not operate as a waiver of such right or provision.</p>
+  </div>
+
+  <div class="policy-section" id="t27">
+    <div class="section-num">Section 27</div>
+    <div class="section-title">Subscriptions &amp; Payments</div>
+    <p>All premium subscriptions are managed via RevenueCat and processed through the Apple App Store or Google Play. Payment methods are determined by the store. We do not directly store credit card information. Users may cancel subscriptions at any time through their app store account.</p>
+  </div>
+
+  <div class="policy-section" id="t28">
+    <div class="section-num">Section 28</div>
+    <div class="section-title">Prohibited Activities (Additional)</div>
+    <p>Users may not attempt to bypass or manipulate subscription features, reverse-engineer the app, share accounts, or use the app for illegal purposes.</p>
+  </div>
+
+  <div class="policy-section" id="t29">
+    <div class="section-num">Section 29</div>
+    <div class="section-title">Contact Us</div>
+    <p>In order to resolve a complaint regarding the Services or to receive further information regarding use of the Services, please contact us at:</p>
+    <div class="highlight-box">
+      <p><strong>TeamTracker – Sports Calendar</strong><br>United States<br><a href="mailto:basecampdevs@gmail.com">basecampdevs@gmail.com</a></p>
     </div>
-  </footer>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Matthew Maness. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="teamtracker.html">← TeamTracker</a>
+    <a href="index.html">Home</a>
+    <a href="mailto:basecampdevs@gmail.com">Contact</a>
+  </div>
+</footer>
 
 </body>
 </html>
