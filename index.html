@@ -3,484 +3,420 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matthew Maness – iOS & Android App Developer</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Matthew Maness – Mobile Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --orange: #F45C2B;
-      --orange-light: #FF7A4D;
-      --dark: #0D0D0D;
-      --dark-2: #141414;
-      --dark-3: #1C1C1C;
-      --dark-4: #252525;
-      --gray: #888888;
-      --light: #F0EDE8;
+      --indigo:        #6366F1;
+      --indigo-dark:   #4F46E5;
+      --indigo-light:  #818CF8;
+      --indigo-bg:     #EEF2FF;
+      --indigo-border: #C7D2FE;
+      --text:          #0F172A;
+      --text-muted:    #64748B;
+      --text-subtle:   #94A3B8;
+      --bg:            #F8F7F4;
+      --card-bg:       #FFFFFF;
+      --border:        #E2E8F0;
+      --border-light:  #F1F5F9;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--dark);
-      color: var(--light);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
       overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4, .syne { font-family: 'Syne', sans-serif; }
-
-    /* Noise texture overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.35;
     }
 
     /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 1.25rem 2.5rem;
+      z-index: 200;
+      height: 60px;
+      padding: 0 2.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(13,13,13,0.85);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: all 0.3s ease;
+      background: rgba(248,247,244,0.93);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      text-decoration: none;
       letter-spacing: -0.02em;
-      color: var(--light);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 0.75rem; }
+
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
       text-decoration: none;
+      padding: 0.4rem 0.75rem;
+      border-radius: 7px;
+      transition: all 0.15s ease;
     }
+    .nav-link:hover { color: var(--text); background: var(--border-light); }
+    .nav-link.active { color: var(--text); }
 
-    .nav-logo span { color: var(--orange); }
-
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 400;
-      color: var(--gray);
+    .nav-btn {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--indigo);
+      background: var(--indigo-bg);
+      border: 1px solid var(--indigo-border);
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
       text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: color 0.2s ease;
+      transition: all 0.15s ease;
+    }
+    .nav-btn:hover { background: var(--indigo); color: white; border-color: var(--indigo); }
+
+    /* ── OUTER WRAPPER ── */
+    .page-wrapper {
+      display: flex;
+      align-items: flex-start;
+      padding-top: 60px;
+      min-height: calc(100vh - 60px);
     }
 
-    .nav-links a:hover { color: var(--light); }
-
-    .nav-cta {
-      background: var(--orange) !important;
-      color: white !important;
-      padding: 0.5rem 1.25rem !important;
-      border-radius: 6px;
-      font-weight: 500 !important;
-      transition: background 0.2s ease !important;
+    /* ── SIDEBAR COLUMN ── */
+    /* This wrapper stretches to match the right column height */
+    .sidebar-col {
+      width: 360px;
+      flex-shrink: 0;
+      align-self: stretch;           /* fills height of taller sibling */
+      border-right: 1px solid var(--border);
+      background: var(--card-bg);
+      position: relative;            /* needed for sticky child */
     }
 
-    .nav-cta:hover { background: var(--orange-light) !important; }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
+    /* Sticky content inside the sidebar column */
+    .sidebar {
+      position: sticky;
+      top: 60px;
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+      padding: 3.5rem 2.75rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 8rem 2.5rem 4rem;
-      position: relative;
-      overflow: hidden;
+      justify-content: space-between;
     }
+    .sidebar::-webkit-scrollbar { width: 0; }
 
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(244,92,43,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(244,92,43,0.06) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(244,92,43,0.1);
-      border: 1px solid rgba(244,92,43,0.25);
-      color: var(--orange-light);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.9rem;
-      border-radius: 100px;
-      margin-bottom: 2rem;
-      width: fit-content;
-    }
-
-    .hero-tag::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--orange);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
-
-    .hero h1 {
-      font-size: clamp(3rem, 8vw, 7rem);
-      font-weight: 800;
-      line-height: 0.95;
+    .sidebar-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
       letter-spacing: -0.03em;
-      max-width: 900px;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .sidebar-title {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--indigo);
       margin-bottom: 1.5rem;
+      letter-spacing: 0.01em;
     }
 
-    .hero h1 em {
-      font-style: normal;
-      color: var(--orange);
-    }
-
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--gray);
-      max-width: 480px;
-      line-height: 1.7;
+    .sidebar-bio {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
       margin-bottom: 2.5rem;
     }
 
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    /* Sidebar nav */
+    .sidebar-nav { display: flex; flex-direction: column; gap: 0.1rem; }
 
-    .btn-primary {
-      background: var(--orange);
-      color: white;
-      padding: 0.875rem 2rem;
-      border-radius: 8px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .btn-primary:hover {
-      background: var(--orange-light);
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--light);
-      padding: 0.875rem 2rem;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.15);
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-ghost:hover {
-      border-color: rgba(255,255,255,0.35);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 2.5rem;
+    .sidebar-nav a {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      color: var(--gray);
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
+      gap: 1rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: var(--text-subtle);
+      text-decoration: none;
+      padding: 0.55rem 0;
+      transition: color 0.15s ease;
     }
 
-    .hero-scroll::before {
-      content: '';
-      width: 40px;
+    .sidebar-nav a .nav-line {
+      display: block;
+      width: 24px;
       height: 1px;
-      background: var(--gray);
+      background: currentColor;
+      transition: width 0.2s ease;
+      flex-shrink: 0;
     }
 
-    /* ── STATS BAR ── */
-    .stats-bar {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding: 2rem 2.5rem;
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      color: var(--indigo);
+    }
+
+    .sidebar-nav a:hover .nav-line,
+    .sidebar-nav a.active .nav-line {
+      width: 48px;
+    }
+
+    /* Sidebar bottom */
+    .sidebar-bottom { padding-top: 2rem; }
+
+    .sidebar-contact-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .sidebar-contact-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-subtle);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .sidebar-contact-links a:hover { color: var(--indigo); }
+
+    .sidebar-location {
       display: flex;
-      gap: 3rem;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      margin-top: 0.75rem;
     }
 
-    .stat { }
-    .stat-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--light);
-    }
-    .stat-num span { color: var(--orange); }
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--gray);
-      letter-spacing: 0.05em;
-      margin-top: 0.1rem;
+    /* ── RIGHT COLUMN ── */
+    .right-col {
+      flex: 1;
+      min-width: 0;
     }
 
-    /* ── SECTION ── */
-    .section {
-      padding: 6rem 2.5rem;
-      position: relative;
-      z-index: 1;
+    /* Each section in the right column */
+    .content-section {
+      padding: 4rem 3.5rem;
+      border-bottom: 1px solid var(--border);
     }
+    .content-section:last-of-type { border-bottom: none; }
 
-    .section-eyebrow {
-      font-size: 0.7rem;
+    .section-label {
+      font-size: 0.68rem;
       font-weight: 600;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 1rem;
+      color: var(--indigo);
+      margin-bottom: 1.5rem;
     }
 
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.025em;
-      margin-bottom: 1.25rem;
-    }
-
-    .section-body {
-      color: var(--gray);
-      font-size: 1rem;
-      line-height: 1.75;
+    /* ── APP CARDS ── */
+    .apps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
       max-width: 560px;
     }
 
-    /* ── APP CARD ── */
-    .app-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3.5rem;
-    }
-
     .app-card {
-      background: var(--dark-3);
-      border: 1px solid rgba(255,255,255,0.07);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 2rem;
-      position: relative;
       overflow: hidden;
-      transition: all 0.3s ease;
       text-decoration: none;
       color: inherit;
-      display: flex;
-      flex-direction: column;
+      display: block;
+      transition: all 0.2s ease;
     }
-
-    .app-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(244,92,43,0.08) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
     .app-card:hover {
-      border-color: rgba(244,92,43,0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      border-color: var(--indigo-border);
+      box-shadow: 0 8px 32px rgba(99,102,241,0.1);
+      transform: translateY(-2px);
     }
 
-    .app-card:hover::before { opacity: 1; }
+    .app-card-banner {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      background: #0B1929;
+    }
+
+    .app-card-body { padding: 1.4rem; }
 
     .app-card-header {
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 1.25rem;
-    }
-
-    .app-icon {
-      width: 56px; height: 56px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--orange), #c93d15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-    }
-
-    .app-badge {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #4ade80;
-      background: rgba(74,222,128,0.1);
-      border: 1px solid rgba(74,222,128,0.2);
-      padding: 0.25rem 0.65rem;
-      border-radius: 100px;
-    }
-
-    .app-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.35rem;
-    }
-
-    .app-tagline {
-      font-size: 0.85rem;
-      color: var(--orange-light);
-      font-weight: 400;
-      margin-bottom: 1rem;
-    }
-
-    .app-desc {
-      font-size: 0.9rem;
-      color: var(--gray);
-      line-height: 1.65;
-      flex: 1;
-      margin-bottom: 1.5rem;
-    }
-
-    .app-features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .feature-pill {
-      font-size: 0.72rem;
-      color: rgba(240,237,232,0.6);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 0.25rem 0.65rem;
-      border-radius: 100px;
-    }
-
-    .app-footer {
-      display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 1.25rem;
-      border-top: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .app-store-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--light);
-      color: var(--dark);
-      font-family: 'Syne', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 0.55rem 1.1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .app-store-btn:hover {
-      background: white;
-      transform: scale(1.03);
-    }
-
-    .app-store-btn svg { width: 14px; height: 14px; }
-
-    .app-policy-link {
-      font-size: 0.78rem;
-      color: var(--gray);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .app-policy-link:hover { color: var(--light); }
-
-    /* ── FEATURES SECTION ── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.25rem;
-      margin-top: 3.5rem;
-    }
-
-    .feature-card {
-      background: var(--dark-3);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 12px;
-      padding: 1.75rem;
-      transition: border-color 0.2s ease;
-    }
-
-    .feature-card:hover {
-      border-color: rgba(244,92,43,0.2);
-    }
-
-    .feature-icon {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .feature-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
       margin-bottom: 0.5rem;
     }
 
-    .feature-text {
-      font-size: 0.85rem;
-      color: var(--gray);
-      line-height: 1.65;
+    .app-card-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
     }
 
-    /* ── DIVIDER ── */
-    .divider {
-      height: 1px;
-      background: rgba(255,255,255,0.06);
-      margin: 0 2.5rem;
+    .badge-soon {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      background: var(--indigo-bg);
+      border: 1px solid var(--indigo-border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
     }
+
+    .badge-dev {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--border-light);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    .app-card-tagline {
+      font-size: 0.8rem;
+      color: var(--indigo);
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+
+    .app-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .app-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
+
+    .pill {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--border-light);
+      border: 1px solid var(--border);
+      padding: 0.18rem 0.55rem;
+      border-radius: 100px;
+    }
+
+    .app-card-footer {
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .btn-view-page {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--indigo);
+      text-decoration: none;
+      transition: gap 0.15s ease;
+    }
+    .btn-view-page:hover { gap: 0.65rem; }
+
+    /* Dev card */
+    .app-card-dev {
+      border-style: dashed;
+      opacity: 0.55;
+      cursor: default;
+      padding: 1.5rem;
+    }
+    .app-card-dev:hover { opacity: 0.65; transform: none; box-shadow: none; border-color: var(--border); }
+
+    .dev-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: var(--indigo-bg);
+      border: 1px dashed var(--indigo-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── ABOUT ── */
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.75rem, 3vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .section-body {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      max-width: 560px;
+    }
+
+    .value-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem;
+      transition: border-color 0.2s ease;
+    }
+    .value-card:hover { border-color: var(--indigo-border); }
+
+    .value-icon { font-size: 1.3rem; margin-bottom: 0.65rem; }
+
+    .value-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.01em;
+    }
+
+    .value-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
 
     /* ── CONTACT ── */
-    .contact-box {
-      background: var(--dark-3);
-      border: 1px solid rgba(255,255,255,0.07);
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 3.5rem;
+      padding: 2.5rem;
+      margin-top: 2.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -488,261 +424,305 @@
       flex-wrap: wrap;
       position: relative;
       overflow: hidden;
+      max-width: 560px;
     }
 
-    .contact-box::before {
+    .contact-card::after {
       content: '';
       position: absolute;
-      top: -40%;
-      right: -10%;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(244,92,43,0.12) 0%, transparent 70%);
+      top: -60px; right: -60px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 70%);
       pointer-events: none;
+    }
+
+    .contact-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-sub { font-size: 0.83rem; color: var(--text-muted); }
+
+    .btn-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--indigo);
+      color: white;
+      font-size: 0.83rem;
+      font-weight: 600;
+      padding: 0.8rem 1.6rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn-email:hover { background: var(--indigo-dark); }
+
+    .contact-email-hint {
+      font-size: 0.7rem;
+      color: var(--text-subtle);
+      text-align: center;
+      margin-top: 0.45rem;
     }
 
     /* ── FOOTER ── */
     footer {
-      padding: 2.5rem 2.5rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 1.75rem 3.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--card-bg);
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem;
-      position: relative;
-      z-index: 1;
     }
 
-    footer p {
-      font-size: 0.8rem;
-      color: var(--gray);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
+    footer p { font-size: 0.75rem; color: var(--text-subtle); }
+    .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a {
-      font-size: 0.8rem;
-      color: var(--gray);
+      font-size: 0.75rem;
+      color: var(--text-subtle);
       text-decoration: none;
-      transition: color 0.2s ease;
+      transition: color 0.15s ease;
     }
-
-    .footer-links a:hover { color: var(--light); }
+    .footer-links a:hover { color: var(--indigo); }
 
     /* ── MOBILE ── */
-    @media (max-width: 640px) {
-      nav { padding: 1rem 1.25rem; }
-      .nav-links { gap: 1rem; }
-      .hero { padding: 7rem 1.25rem 4rem; }
-      .stats-bar { padding: 1.5rem 1.25rem; gap: 1.5rem; }
-      .section { padding: 4rem 1.25rem; }
-      .contact-box { padding: 2rem; }
-      footer { padding: 2rem 1.25rem; }
-      .divider { margin: 0 1.25rem; }
-    }
-
-    /* ── FADE IN ANIMATION ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .page-wrapper { flex-direction: column; }
+      .sidebar-col {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .sidebar {
+        position: static;
+        height: auto;
+        padding: 2rem 1.5rem;
+      }
+      .sidebar-nav { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
+      .sidebar-nav a .nav-line { display: none; }
+      .content-section { padding: 2.5rem 1.5rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .contact-card { padding: 1.75rem; }
+      footer { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">Matthew<span>Maness</span></a>
-    <div class="nav-links">
-      <a href="#apps">Apps</a>
-      <a href="teamtracker.html">SportsCalendar</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="#apps" class="nav-cta">View Apps</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-tag">iOS & Android Developer · Denver, CO</div>
-    <h1>I build apps<br />people <em>actually use.</em></h1>
-    <p class="hero-sub">
-      Hi, I'm Matthew — an independent mobile developer based in Denver, CO. I design and build focused, polished Flutter apps for iOS and Android, solo from idea to App Store.
-    </p>
-    <div class="hero-actions">
-      <a href="#apps" class="btn-primary">
-        Explore Apps
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-      </a>
-      <a href="#contact" class="btn-ghost">Get in Touch</a>
-    </div>
-    <div class="hero-scroll">Scroll to explore</div>
-  </section>
-
-  <!-- STATS -->
-  <div class="stats-bar">
-    <div class="stat">
-      <div class="stat-num">2<span>+</span></div>
-      <div class="stat-label">Apps Published</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">iOS <span>&</span> Android</div>
-      <div class="stat-label">Cross-Platform</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">Flutter<span>/</span>Dart</div>
-      <div class="stat-label">Built With</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">Denver<span>,</span> CO</div>
-      <div class="stat-label">Based In</div>
-    </div>
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">Matthew Maness</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="teamtracker.html" class="nav-btn">TeamTracker</a>
   </div>
+</nav>
 
-  <!-- APPS -->
-  <section class="section" id="apps">
-    <p class="section-eyebrow">My Apps</p>
-    <h2 class="section-title">What I've Built</h2>
-    <p class="section-body">Each app is designed around a real problem, built with Flutter, and shipped with a focus on clean UI and long-term support.</p>
+<!-- ── PAGE WRAPPER ── -->
+<div class="page-wrapper">
 
-    <div class="app-grid">
+  <!-- LEFT SIDEBAR COLUMN (stretches full height) -->
+  <div class="sidebar-col">
+    <aside class="sidebar">
 
-      <!-- SportsCalendar / TeamTracker -->
-      <div class="app-card fade-up">
-        <div class="app-card-header">
-          <div class="app-icon">🏆</div>
-          <span class="app-badge">Live</span>
-        </div>
-        <div class="app-name">SportsCalendar</div>
-        <div class="app-tagline">Never miss a game again</div>
-        <p class="app-desc">
-          Track your favorite teams across every major league. Get personalized game schedules, real-time updates, and a custom calendar built around your teams — all in one place.
+      <div class="sidebar-top">
+        <div class="sidebar-name">Matthew<br/>Maness</div>
+        <div class="sidebar-title">Independent Mobile Developer</div>
+        <p class="sidebar-bio">
+          I design and build focused, polished Flutter apps for iOS and Android — solo, from idea to App Store. Based in Denver, CO.
         </p>
-        <div class="app-features">
-          <span class="feature-pill">NFL · NBA · NHL · MLB</span>
-          <span class="feature-pill">Live Scores</span>
-          <span class="feature-pill">Custom Calendar</span>
-          <span class="feature-pill">Follow Teams</span>
-          <span class="feature-pill">iOS & Android</span>
-        </div>
-        <div class="app-footer">
-          <a href="#" class="app-store-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            App Store
+
+        <nav class="sidebar-nav">
+          <a href="#apps" class="active">
+            <span class="nav-line"></span>
+            Apps
           </a>
-          <a href="teamtracker.html" class="app-policy-link">View App Page →</a>
+          <a href="#about">
+            <span class="nav-line"></span>
+            About
+          </a>
+          <a href="#contact">
+            <span class="nav-line"></span>
+            Contact
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-contact-links">
+          <a href="mailto:basecampdevs@gmail.com">Email</a>
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="sidebar-location">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="12" height="12">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+          </svg>
+          Denver, Colorado
         </div>
       </div>
 
-      <!-- Placeholder for future apps -->
-      <div class="app-card fade-up" style="border-style: dashed; opacity: 0.45; cursor: default;">
-        <div class="app-card-header">
-          <div class="app-icon" style="background: rgba(255,255,255,0.05);">🚀</div>
-        </div>
-        <div class="app-name">Coming Soon</div>
-        <div class="app-tagline">Next app in development</div>
-        <p class="app-desc">
-          More apps are in the works. Stay tuned for new tools built with the same care and attention to detail.
-        </p>
-        <div class="app-footer">
-          <a href="#contact" class="app-policy-link">Get notified →</a>
-        </div>
-      </div>
+    </aside>
+  </div>
+  <!-- END SIDEBAR COLUMN -->
 
-    </div>
-  </section>
 
-  <div class="divider"></div>
+  <!-- RIGHT COLUMN (all content) -->
+  <main class="right-col">
 
-  <!-- ABOUT / VALUES -->
-  <section class="section" id="about">
-    <p class="section-eyebrow">About Me</p>
-    <h2 class="section-title">Solo developer.<br />Full stack builder.</h2>
-    <p class="section-body">I'm Matthew Maness — a self-taught mobile developer with an engineering background from Colorado School of Mines. I build every app from scratch, solo, with a focus on quality over quantity.</p>
+    <!-- APPS -->
+    <section class="content-section" id="apps">
+      <p class="section-label">Apps</p>
 
-    <div class="features-grid" style="margin-top: 3.5rem;">
-      <div class="feature-card fade-up">
-        <div class="feature-icon">🎯</div>
-        <div class="feature-title">Focused</div>
-        <p class="feature-text">Every app does one thing exceptionally well. No feature bloat, no clutter — just a clean experience around a clear purpose.</p>
-      </div>
-      <div class="feature-card fade-up">
-        <div class="feature-icon">🔒</div>
-        <div class="feature-title">Privacy First</div>
-        <p class="feature-text">Transparent data practices, clear policies, and no selling your data. Your privacy is a feature, not an afterthought.</p>
-      </div>
-      <div class="feature-card fade-up">
-        <div class="feature-icon">📱</div>
-        <div class="feature-title">Flutter & Dart</div>
-        <p class="feature-text">Built with Flutter for seamless iOS and Android experiences that feel native on both platforms from a single codebase.</p>
-      </div>
-      <div class="feature-card fade-up">
-        <div class="feature-icon">⚡</div>
-        <div class="feature-title">Actively Maintained</div>
-        <p class="feature-text">Regular updates, responsive support, and a commitment to long-term quality — not just a launch-and-abandon approach.</p>
-      </div>
-    </div>
-  </section>
+      <div class="apps-list">
 
-  <div class="divider"></div>
-
-  <!-- CONTACT -->
-  <section class="section" id="contact">
-    <div class="contact-box">
-      <div>
-        <p class="section-eyebrow">Contact</p>
-        <h2 class="section-title" style="font-size: clamp(1.75rem, 3vw, 2.75rem); margin-bottom: 0.75rem;">Have a question<br />or feedback?</h2>
-        <p style="color: var(--gray); font-size: 0.95rem; line-height: 1.7; max-width: 400px;">
-          Whether it's a bug report, feature request, or just want to say hi — reach out directly. Every message gets a real response from me.
-        </p>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 1rem; min-width: 220px;">
-        <a href="mailto:basecampdevs@gmail.com" class="btn-primary" style="justify-content: center;">
-          ✉️ &nbsp; Send an Email
+        <!-- TeamTracker Card -->
+        <a href="teamtracker.html" class="app-card">
+          <img src="teamtracker-icon.png" alt="TeamTracker" class="app-card-banner" />
+          <div class="app-card-body">
+            <div class="app-card-header">
+              <div class="app-card-name">TeamTracker</div>
+              <span class="badge-soon">Coming Soon</span>
+            </div>
+            <div class="app-card-tagline">Sports Calendar — Never miss a game again</div>
+            <p class="app-card-desc">
+              Track your favorite teams across every major league. Get personalized game schedules, real-time updates, and a custom calendar built around your teams — all in one place.
+            </p>
+            <div class="app-pills">
+              <span class="pill">NFL · NBA · NHL · MLB</span>
+              <span class="pill">Live Scores</span>
+              <span class="pill">Custom Calendar</span>
+              <span class="pill">iOS & Android</span>
+            </div>
+            <div class="app-card-footer">
+              <span class="btn-view-page">
+                View app page
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="13" height="13">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                </svg>
+              </span>
+            </div>
+          </div>
         </a>
-        <p style="font-size: 0.78rem; color: var(--gray); text-align: center;">basecampdevs@gmail.com</p>
+
+        <!-- In-Development Mystery Card -->
+        <div class="app-card app-card-dev">
+          <div class="dev-icon">🚀</div>
+          <div class="app-card-header" style="margin-bottom:0.4rem;">
+            <div class="app-card-name">Coming Soon</div>
+            <span class="badge-dev">In Development</span>
+          </div>
+          <div class="app-card-tagline">Something new is in the works</div>
+          <p class="app-card-desc" style="margin-bottom:0;">
+            More apps on the way — built with the same care and attention to detail. Stay tuned.
+          </p>
+        </div>
+
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Matthew Maness. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="#apps">Apps</a>
-      <a href="#about">About</a>
-      <a href="teamtracker.html">SportsCalendar</a>
-      <a href="mailto:basecampdevs@gmail.com">Contact</a>
-    </div>
-  </footer>
+    <!-- ABOUT -->
+    <section class="content-section" id="about">
+      <p class="section-label">About Me</p>
+      <h2 class="section-title">Solo developer.<br/>Full-stack builder.</h2>
+      <p class="section-body">
+        I'm Matthew Maness — a self-taught mobile developer with an engineering background from Colorado School of Mines. I build every app from scratch, solo, with a focus on quality over quantity.
+      </p>
 
-  <script>
-    // Fade-up on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🎯</div>
+          <div class="value-title">Focused</div>
+          <p class="value-text">Every app does one thing exceptionally well. No feature bloat — just a clean experience around a clear purpose.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🔒</div>
+          <div class="value-title">Privacy First</div>
+          <p class="value-text">Transparent data practices and clear policies. Your privacy is a feature, not an afterthought.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">📱</div>
+          <div class="value-title">Flutter & Dart</div>
+          <p class="value-text">Built with Flutter for seamless iOS and Android experiences that feel native on both platforms.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">⚡</div>
+          <div class="value-title">Actively Maintained</div>
+          <p class="value-text">Regular updates and responsive support. Not a launch-and-abandon approach.</p>
+        </div>
+      </div>
+    </section>
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    <!-- CONTACT -->
+    <section class="content-section" id="contact">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Have a question<br/>or feedback?</h2>
+      <p class="section-body">
+        Whether it's a bug report, feature request, or just want to say hi — reach out directly. Every message gets a real response from me.
+      </p>
 
-    // Nav shadow on scroll
-    const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-      nav.style.boxShadow = window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,0.4)' : 'none';
+      <div class="contact-card">
+        <div>
+          <p class="contact-heading">Let's talk</p>
+          <p class="contact-sub">I respond to every email personally.</p>
+        </div>
+        <div>
+          <a href="mailto:basecampdevs@gmail.com" class="btn-email">
+            ✉&nbsp; Send an Email
+          </a>
+          <p class="contact-email-hint">basecampdevs@gmail.com</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- END RIGHT COLUMN -->
+
+</div>
+<!-- END PAGE WRAPPER -->
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© 2026 Matthew Maness. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#apps">Apps</a>
+    <a href="#about">About</a>
+    <a href="teamtracker.html">TeamTracker</a>
+    <a href="mailto:basecampdevs@gmail.com">Contact</a>
+  </div>
+</footer>
+
+
+<script>
+  // Sidebar nav active state
+  const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+  const setActive = (id) => {
+    navLinks.forEach(l => l.classList.remove('active'));
+    const link = document.querySelector(`.sidebar-nav a[href="#${id}"]`);
+    if (link) link.classList.add('active');
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
     });
-  </script>
+  }, { threshold: 0.25, rootMargin: '-5% 0px -50% 0px' });
+
+  ['apps', 'about', 'contact'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>
+
 </body>
 </html>
