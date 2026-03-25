@@ -93,6 +93,10 @@
       align-items: flex-start;
       padding-top: 60px;
       min-height: calc(100vh - 60px);
+      max-width: 1360px;
+      margin: 0 auto;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
     }
 
     /* ── SIDEBAR COLUMN ── */
@@ -229,7 +233,7 @@
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
-      max-width: 560px;
+      max-width: 640px;
     }
 
     .app-card {
@@ -377,7 +381,7 @@
       font-size: 0.95rem;
       color: var(--text-muted);
       line-height: 1.8;
-      max-width: 520px;
+      max-width: 600px;
     }
 
     .values-grid {
@@ -385,7 +389,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
       margin-top: 2.5rem;
-      max-width: 560px;
+      max-width: 640px;
     }
 
     .value-card {
@@ -424,7 +428,7 @@
       flex-wrap: wrap;
       position: relative;
       overflow: hidden;
-      max-width: 560px;
+      max-width: 640px;
     }
 
     .contact-card::after {
@@ -474,12 +478,16 @@
     footer {
       padding: 1.75rem 3.5rem;
       border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
       background: var(--card-bg);
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem;
+      max-width: 1360px;
+      margin: 0 auto;
     }
 
     footer p { font-size: 0.75rem; color: var(--text-subtle); }
@@ -540,7 +548,7 @@
           I design and build focused, polished Flutter apps for iOS and Android — solo, from idea to App Store. Based in Denver, CO.
         </p>
 
-        <nav class="sidebar-nav">
+        <div class="sidebar-nav">
           <a href="#apps" class="active">
             <span class="nav-line"></span>
             Apps
@@ -553,7 +561,7 @@
             <span class="nav-line"></span>
             Contact
           </a>
-        </nav>
+        </div>
       </div>
 
       <div class="sidebar-bottom">
